@@ -1,0 +1,40 @@
+// Font Family
+$font-primary: "Montserrat", sans-serif;
+
+// Fluid Font Sizes using clamp(min-size, fluid-calc, max-size)
+// Formula: clamp(min-rem, base-rem + viewport-width-vw, max-rem)
+:root {
+  --font-family-base: #{$font-primary};
+
+  // Heading fluid font sizes
+  --font-size-h1: clamp(2rem, 1.4rem + 2.5vw, 3.25rem);       // ~32px to 52px
+  --font-size-h2: clamp(1.625rem, 1.25rem + 1.8vw, 2.5rem);   // ~26px to 40px
+  --font-size-h3: clamp(1.375rem, 1.15rem + 1.2vw, 2rem);     // ~22px to 32px
+  --font-size-h4: clamp(1.125rem, 1rem + 0.8vw, 1.5rem);       // ~18px to 24px
+
+  // Body & Text fluid font sizes
+  --font-size-lg: clamp(1.125rem, 1.05rem + 0.4vw, 1.25rem);   // ~18px to 20px
+  --font-size-base: clamp(0.9375rem, 0.9rem + 0.25vw, 1rem);   // ~15px to 16px
+  --font-size-sm: clamp(0.8125rem, 0.8rem + 0.15vw, 0.875rem); // ~13px to 14px
+  --font-size-xs: clamp(0.6875rem, 0.65rem + 0.1vw, 0.75rem);  // ~11px to 12px
+}
+
+// SCSS shortcuts mapped to CSS variables
+$font-size-h1: var(--font-size-h1);
+$font-size-h2: var(--font-size-h2);
+$font-size-h3: var(--font-size-h3);
+$font-size-h4: var(--font-size-h4);
+$font-size-lg: var(--font-size-lg);
+$font-size-base: var(--font-size-base);
+$font-size-sm: var(--font-size-sm);
+$font-size-xs: var(--font-size-xs);
+
+// Screen size breakpoints
+$breakpoints: (
+        "mobile-portrait":  320px,
+        "mobile-landscape": 576px,
+        "tablet-portrait":  768px,
+        "tablet-landscape": 1024px,
+        "desktop":          1280px,
+        "desktop-wide":     1440px
+) !default;
