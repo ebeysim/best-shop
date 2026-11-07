@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "variables" as vars;
 
+
 // Primary responsive mixin using min-width
 @mixin for-device($device) {
   @if map.has-key(vars.$breakpoints, $device) {

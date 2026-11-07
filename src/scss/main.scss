@@ -1,5 +1,4 @@
-@use "abstracts/variables";
-@use "abstracts/mixins";
+@use "abstracts" as *;
 
 // 2. Base styles (Fonts and Reset)
 @use "base/fonts";

@@ -1,0 +1,282 @@
+@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as *;
+
+.site-header {
+  background-color: vars.$color-background;
+  width: 100%;
+  position: sticky;
+  top: 0;
+
+  &__top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "logo actions"
+      "socials socials";
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+
+  &__socials {
+    grid-area: socials;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+
+    img {
+      display: block;
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  &__logo {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    color: vars.$color-accent;
+    font-size: 1.25rem;
+    font-weight: 800;
+    white-space: nowrap;
+    text-decoration: none;
+
+    img {
+      display: block;
+      width: 2.25rem;
+      height: auto;
+    }
+  }
+
+  &__actions {
+    grid-area: actions;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    button, a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      padding: 0.35rem;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+
+      img {
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
+
+  &__cart {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      top: -0.25rem;
+      right: -0.25rem;
+      display: flex;
+      min-width: 1.25rem;
+      height: 1.25rem;
+      align-items: center;
+      justify-content: center;
+      padding-inline: 0.25rem;
+      border-radius: 999px;
+      background-color: vars.$color-accent;
+      color: vars.$color-background;
+      content: attr(data-cart-count);
+      font-size: 0.7rem;
+      font-weight: 700;
+      line-height: 1;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    &[data-cart-count="0"]::after {
+      display: none;
+    }
+  }
+
+  .burger-btn {
+    flex-direction: column;
+    gap: 0.25rem;
+
+    span {
+      display: block;
+      width: 1.25rem;
+      height: 2px;
+      border-radius: 2px;
+      background-color: vars.$color-text;
+      transition: transform 160ms ease, opacity 160ms ease;
+    }
+  }
+
+  &-enhanced .burger-btn {
+    display: inline-flex;
+  }
+
+  &-enhanced .burger-btn[aria-expanded="true"] {
+    span:first-child {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:last-child {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+
+  &__divider {
+    border: none;
+    border-top: 1px solid #ececec;
+    margin: 0;
+  }
+}
+
+.site-nav {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+
+  .site-header-enhanced & {
+    display: none;
+
+    &.is-open {
+      display: flex;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    display: block;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    color: vars.$color-text;
+    font-size: 0.95rem;
+    text-align: center;
+
+    &:hover,
+    &[aria-current="page"] {
+      color: vars.$color-accent;
+    }
+  }
+}
+
+@include for-device("mobile-landscape") {
+  .site-header {
+    &__top {
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      grid-template-areas: "socials logo actions";
+      padding-inline: 1.5rem;
+    }
+
+    &__socials {
+      justify-content: flex-start;
+    }
+
+    &__actions {
+      gap: 0.5rem;
+    }
+  }
+
+  .site-nav {
+    &__list {
+      flex-flow: row wrap;
+      justify-content: center;
+      width: auto;
+      gap: 0.5rem 1rem;
+    }
+
+    &__link {
+      padding: 0.5rem 0.25rem;
+    }
+  }
+}
+
+@include for-device("tablet-portrait") {
+  .site-header {
+    &__top {
+      padding-inline: 2rem;
+    }
+
+    .burger-btn {
+      display: none;
+    }
+  }
+
+  .site-nav {
+    padding: 0.75rem 1.5rem;
+
+    .site-header-enhanced & {
+      display: flex;
+    }
+
+    &__list {
+      gap: 1.5rem;
+    }
+
+    &__link {
+      padding: 0.5rem 0.25rem;
+    }
+  }
+}
+
+@include for-device("tablet-landscape") {
+  .site-header {
+    &__top {
+      padding-inline: 3rem;
+    }
+  }
+
+  .site-nav {
+    &__list {
+      gap: 2.25rem;
+    }
+  }
+}
+
+@include for-device("desktop") {
+  .site-header {
+    &__top {
+      max-width: 80rem;
+      margin-inline: auto;
+      padding-inline: 4rem;
+    }
+  }
+
+  .site-nav {
+    &__list {
+      gap: 2.75rem;
+    }
+  }
+}
+
+@include for-device("desktop-wide") {
+  .site-header {
+    &__top {
+      max-width: 90rem;
+    }
+  }
+}

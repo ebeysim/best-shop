@@ -17,7 +17,7 @@
     "compile": "npm-run-all compile:sass compile:ts",
     "watch:sass": "sass src/scss:dist/css --watch",
     "watch:ts": "tsc --watch",
-    "serve": "live-server src --port=3000 --watch=dist,src/**/*.html",
+    "serve": "live-server --port=3000 --open=src/index.html --watch=dist,src/**/*.html",
     "dev": "npm run compile && npm-run-all --parallel watch:sass watch:ts serve",
     "lint:js": "eslint ./src --ext .js,.ts",
     "lint:style": "stylelint \"src/**/*.scss\"",

@@ -1,0 +1,17 @@
+@use "sass:math";
+
+$fluid-min-vw: 360px;
+$fluid-max-vw: 1200px;
+
+// 2. Automated CSS clamp generator
+@function fluid-font($min-px, $max-px, $min-vw: $fluid-min-vw, $max-vw: $fluid-max-vw) {
+  $min-rem: math.div($min-px, 16px) * 1rem;
+  $max-rem: math.div($max-px, 16px) * 1rem;
+
+  // Slope & Intercept
+  $slope: math.div($max-px - $min-px, $max-vw - $min-vw);
+  $intercept: math.div($min-px - ($slope * $min-vw), 16px) * 1rem;
+  $vw: ($slope * 100) * 1vw;
+
+  @return clamp(#{$min-rem}, calc(#{$intercept} + #{$vw}), #{$max-rem});
+}
