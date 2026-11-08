@@ -8,19 +8,23 @@
   --font-family-base: "Montserrat", sans-serif;
 
   // Heading fluid-font() font sizes
-  --font-size-h1: #{fluid-font(32px, 52px)};       // ~32px to 52px
+  --font-size-h1: #{fluid-font(32px, 50px)};       // ~32px to 50px
   --font-size-h2: #{fluid-font(26px, 40px)};   // ~26px to 40px
   --font-size-h3: #{fluid-font(22px, 32px)};     // ~22px to 32px
   --font-size-h4: #{fluid-font(18px, 24px)};       // ~18px to 24px
 
   // Body & Text fluid-font() font sizes
   --font-size-lg: #{fluid-font(18px, 20px)};   // ~18px to 20px
-  --font-size-base: #{fluid-font(15px, 16px)};   // ~15px to 16px
+  --font-size-base: #{fluid-font(15px, 18px)};   // ~15px to 18px
   --font-size-sm: #{fluid-font(13px, 14px)}; // ~13px to 14px
   --font-size-xs: #{fluid-font(11px, 12px)};  // ~11px to 12px
 
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
   // Colors
   --color-background: #FFFFFF;
+  --color-secondary: #E7E8E9;
   --color-accent: #B92770;
   --color-text: #000000;
   --color-secondary-text: #504E4A;
@@ -39,10 +43,13 @@ $font-size-base: var(--font-size-base);
 $font-size-sm: var(--font-size-sm);
 $font-size-xs: var(--font-size-xs);
 $color-background: var(--color-background);
+$color-secondary: var(--color-secondary);
 $color-accent: var(--color-accent);
 $color-text: var(--color-text);
 $color-secondary-text: var(--color-secondary-text);
 $color-yellow: var(--color-yellow);
+$font-weight-normal: var(--font-weight-normal);
+$font-weight-bold: var(--font-weight-bold);
 
 // Screen size breakpoints
 $breakpoints: (

@@ -16,19 +16,19 @@
     <!-- Top Utility Bar: Socials, Logo, User & Cart -->
     <div class="site-header__top">
         <div class="site-header__socials">
-            <a href="#" aria-label="Facebook"><img src="assets/img/facebook.png" alt="Link to Facebook page"></a>
-            <a href="#" aria-label="Twitter"><img src="assets/img/twitter.png" alt="Link to Twitter page"></a>
-            <a href="#" aria-label="Instagram"><img src="assets/img/instagram.png" alt="Link to Instagram page"></a>
+            <a href="#" aria-label="Facebook"><img src="assets/images/facebook.png" alt="Link to Facebook page"></a>
+            <a href="#" aria-label="Twitter"><img src="assets/images/twitter.png" alt="Link to Twitter page"></a>
+            <a href="#" aria-label="Instagram"><img src="assets/images/instagram.png" alt="Link to Instagram page"></a>
         </div>
 
         <a href="index.html" class="site-header__logo">
-            <img src="assets/img/logo.png" alt="">
+            <img src="assets/images/logo.png" alt="">
             <span>BEST SHOP</span>
         </a>
 
         <div class="site-header__actions">
-            <button type="button" aria-label="My Account"><img src="assets/img/user.png" alt="Login"></button>
-            <a class="site-header__cart" data-cart-count="0" aria-label="Shopping Cart, 0 items" href="html/cart.html"><img src="assets/img/cart.png" alt="" /></a>
+            <button type="button" aria-label="My Account"><img src="assets/images/user.png" alt="Login"></button>
+            <a class="site-header__cart" data-cart-count="0" aria-label="Shopping Cart, 0 items" href="html/cart.html"><img src="assets/images/cart.png" alt="" /></a>
 
             <button class="burger-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
                 <span aria-hidden="true"></span>
@@ -60,34 +60,82 @@
     </nav>
 </header>
 
-<main class="main-content" style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
-    <section class="typography-test">
-        <h1>Heading 1 — Montserrat Fluid Title (~32px to 52px)</h1>
-        <p class="text-lead" style="font-size: var(--font-size-lg); color: #555;">
-            Lead text (lg) — Fluid subtitle testing fluid clamp responsiveness across screen widths.
-        </p>
+<main class="main-content">
+    <section class="hero">
+        <article class="hero__main">
+            <div class="hero__main__text">
+                <h1>Smart Styles for Every Destination</h1>
+                <p>Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim.<br>
+                    Nullam pulvinar felis at metus.
+                </p>
 
-        <h2>Heading 2 — Section Title (~26px to 40px)</h2>
-        <p>
-            Body base text — Regular paragraph content testing base font size (~15px to 16px).
-            Resize your browser window (mobile, tablet, desktop) to observe fluid scaling without media query jumps.
-        </p>
+                <a class="btn" href="html/catalog.html">View all items</a>
+            </div>
+            <div class="hero__main__image">
+                <img src="assets/images/home/header_image.png" alt="Hero Image - suitcase">
 
-        <h3>Heading 3 — Subsection Title (~22px to 32px)</h3>
-        <p style="font-size: var(--font-size-sm);">
-            Small text (sm) — Secondary text or product meta information (~13px to 14px).
-        </p>
+            </div>
+        </article>
 
-        <h4>Heading 4 — Card or Widget Title (~18px to 24px)</h4>
-        <p style="font-size: var(--font-size-xs);">
-            Extra small text (xs) — Captions, tags, or footer notes (~11px to 12px).
-        </p>
+        <article class="hero-discount">
+            <!-- Left Side on Desktop: Testimonial -->
+            <div class="hero-discount__review">
+                <div class="hero-discount__author">
+                    <div class="hero-discount__avatar">
+                        <img src="assets/images/home/cmo.png" alt="Lillian Bennett" width="48" height="48">
+                    </div>
+                    <div class="hero-discount__meta">
+                        <h3 class="hero-discount__name">Lillian Bennett</h3>
+                        <p class="hero-discount__role">Chief Marketing Officer</p>
+                    </div>
+                </div>
+
+                <h2 class="hero-discount__title">
+                    Aliquam Faucibus Odionecom.
+                </h2>
+                <p class="hero-discount__body">
+                    Duis vestibulum elit vel neque pharetra vulputate. Quisque scelerisque nisi urna. Duis rutrum non risus in imperdiet. Proin molestie accumsan nulla sit.
+                </p>
+                <p class="hero-discount__body hero-discount__body--highlight">
+                    Namaki duis vestibulum elit vel neque pharetra vulputate. Quisque scelerisque nisi urna.
+                </p>
+            </div>
+
+            <!-- Right Side on Desktop: Promo Banner with Suitcase Background -->
+            <div class="hero-discount__banner">
+                <div class="hero-discount__banner-content">
+                    <h2 class="hero-discount__banner-title">25 % Discount</h2>
+                    <p class="hero-discount__banner-desc">
+                        Curabitur vulputate arcu odio, ac facilisis diam accumsan ut. Ut imperdiet et leo in vulputate.
+                    </p>
+                    <a class="btn" href="#">Get Discount</a>
+                </div>
+            </div>
+        </article>
+
+    </section>
+
+    <section class="travel_suitcases">
+        <h2>Travel Suitcases</h2>
+
+    </section>
+
+    <section class="selected_suitcases">
+        <h2>Selected Products</h2>
+    </section>
+
+    <section class="offer">
+        <h2>Offer</h2>
+    </section>
+
+    <section class="new-arrival">
+        <h2>New Products Arrival</h2>
     </section>
 </main>
 
 <footer class="site-footer" id="footer-root" aria-label="Footer">
     <section class="site-footer__benefits-container">
-        <img src="assets/img/footer_benefits.png" alt="Logo" class="site-footer__logo">
+        <img src="assets/images/footer_benefits.png" alt="Logo" class="site-footer__logo">
     </section>
 
     <section class="site-footer__information">

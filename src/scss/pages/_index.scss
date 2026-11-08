@@ -1,0 +1,205 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as *;
+
+.main-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.hero{
+  width: 100vw;
+}
+
+.hero__main {
+  width: 100%;
+  background-color: vars.$color-secondary;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem clamp(2rem, 10vw, 10rem);
+
+  &__text{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+
+    h1{
+      color: vars.$color-text;
+      font-size: vars.$font-size-h1;
+      font-weight: vars.$font-weight-bold;
+    }
+
+    p{
+
+      color: vars.$color-secondary-text;
+      font-size: vars.$font-size-base;
+    }
+  }
+  &__image{
+    margin-right: 10%;
+    width: 60%;
+    height: auto;
+
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  @include for-device("tablet-landscape"){
+    flex-direction: row;
+    &__text{
+      text-align: left;
+
+      p{
+        position: relative;
+        text-wrap: wrap;
+        width: 120%;
+        left: 10%;
+      }
+
+    }
+    &__image{
+      margin: 0;
+      width: 90%;
+    }
+  }
+}
+
+.hero-discount {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: vars.$color-background;
+  border-radius: 1px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  @include for-device("desktop") {
+    flex-direction: row;
+    max-width: 980px;
+    margin-inline: auto;
+    margin-top: clamp(-5rem, -4vw, -2rem);
+    position: relative;
+    z-index: 10;
+  }
+
+  &__review {
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    background-color: vars.$color-background;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  &__name {
+    font-size: var(--font-size-md);
+    font-weight: vars.$font-weight-bold;
+    color: vars.$color-text;
+    margin: 0;
+  }
+
+  &__role {
+    font-size: var(--font-size-sm);
+    color: vars.$color-secondary-text;
+    margin: 0;
+  }
+
+  &__title {
+    font-size: vars.$font-size-h2;
+    font-weight: vars.$font-weight-bold;
+    color: vars.$color-text;
+    margin-bottom: 1rem;
+  }
+
+  &__body {
+    font-size: vars.$font-size-sm;
+    line-height: 1.5;
+    color: vars.$color-secondary-text;
+    margin-bottom: 0.75rem;
+
+    &--highlight {
+      margin-bottom: 0;
+      color: vars.$color-secondary-text;
+    }
+  }
+
+  &__banner {
+    flex: 0.9;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+
+    background:
+            linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6)),
+            url("../../src/assets/images/home/suitcases_main_banner.png") center / cover no-repeat;
+    padding: clamp(2rem, 4vw, 3rem);
+    min-height: 320px;
+
+    @include for-device("desktop") {
+      min-height: auto;
+    }
+  }
+
+  &__banner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: vars.$color-background;
+    z-index: 1;
+  }
+
+  &__banner-title {
+    font-size: vars.$font-size-h2;
+    font-weight: vars.$font-weight-bold;
+    color: vars.$color-background;
+    margin: 0;
+  }
+
+  &__banner-desc {
+    font-size: vars.$font-size-sm;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    max-width: 32ch;
+  }
+}

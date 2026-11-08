@@ -16,6 +16,12 @@
     align-items: center;
     gap: 0.75rem;
     padding: 0.75rem 1rem;
+
+    @include for-device("mobile-landscape"){
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        grid-template-areas: "socials logo actions";
+        padding-inline: 1.5rem;
+    }
   }
 
   &__socials {
@@ -24,6 +30,10 @@
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
+
+    @include for-device("mobile-landscape"){
+      justify-content: flex-start;
+    }
 
     img {
       display: block;
@@ -49,6 +59,7 @@
       width: 2.25rem;
       height: auto;
     }
+
   }
 
   &__actions {
@@ -57,6 +68,10 @@
     display: flex;
     align-items: center;
     gap: 0.25rem;
+
+    @include for-device("mobile-landscape"){
+      gap: 0.5rem;
+    }
 
     button, a {
       display: inline-flex;
@@ -185,22 +200,6 @@
 }
 
 @include for-device("mobile-landscape") {
-  .site-header {
-    &__top {
-      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-      grid-template-areas: "socials logo actions";
-      padding-inline: 1.5rem;
-    }
-
-    &__socials {
-      justify-content: flex-start;
-    }
-
-    &__actions {
-      gap: 0.5rem;
-    }
-  }
-
   .site-nav {
     &__list {
       flex-flow: row wrap;

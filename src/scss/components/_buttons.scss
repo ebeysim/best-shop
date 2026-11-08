@@ -1,0 +1,11 @@
+@use "../abstracts/variables" as vars;
+.btn{
+  border: none;
+  padding: 1rem 1.5rem;
+  font-size: vars.$font-size-base;
+  color: vars.$color-background;
+  background-color: vars.$color-accent;
+  text-decoration: none;
+  font-weight: vars.$font-weight-bold;
+  font-family: vars.$font-primary;
+}

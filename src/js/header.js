@@ -49,16 +49,9 @@ if (header && menuToggle && navigation) {
     setMenuOpen(isOpen);
   });
 
-  navigation.addEventListener("click", (event) => {
-    if (event.target instanceof Element && event.target.closest("a")) {
-      setMenuOpen(false);
-    }
-  });
-
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
       setMenuOpen(false);
-      menuToggle.focus();
     }
   });
 
