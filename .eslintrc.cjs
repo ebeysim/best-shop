@@ -1,5 +1,10 @@
 /* eslint-env node */
 module.exports = {
+    env: {
+        browser: true,
+        es2020: true,
+        node: true,
+    },
     extends: ['eslint:recommended',
         'plugin:@typescript-eslint/strict',
         'plugin:@typescript-eslint/stylistic',],

@@ -1,5 +1,9 @@
 @use "../abstracts/variables" as vars;
-.btn{
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   padding: 1rem 1.5rem;
   font-size: vars.$font-size-base;
@@ -8,4 +12,25 @@
   text-decoration: none;
   font-weight: vars.$font-weight-bold;
   font-family: vars.$font-primary;
+  line-height: 1.2;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &--sm,
+  &--small {
+    padding: 0.5rem 1rem;
+    font-size: vars.$font-size-sm;
+    white-space: nowrap;
+  }
+
+  &--lg,
+  &--large {
+    padding: 0.75rem 2rem;
+    font-size: vars.$font-size-base;
+  }
 }

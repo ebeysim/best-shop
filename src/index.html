@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../dist/css/main.css" />
     <script src="js/cart.js" defer></script>
     <script src="js/header.js" defer></script>
+    <script type="module" src="js/home.js" defer></script>
 </head>
 <body class="home-page">
 
@@ -112,24 +113,40 @@
                 </div>
             </div>
         </article>
-
     </section>
 
     <section class="travel_suitcases">
-        <h2>Travel Suitcases</h2>
-
+        <div class="travel_suitcases__header">
+            <h2 class="travel_suitcases__title">Travel Suitcases</h2>
+            <p class="travel_suitcases__subtitle">Duis vestibulum elit vel neque pharetra</p>
+        </div>
+        <div class="travel_suitcases__cards-container" id="travel-suitcases-container"></div>
     </section>
 
     <section class="selected_suitcases">
-        <h2>Selected Products</h2>
+        <div class="selected_suitcases__header">
+            <h2 class="selected_suitcases__title">Selected Products</h2>
+            <p class="selected_suitcases__subtitle">Duis vestibulum elit vel neque pharetra</p>
+        </div>
+        <div class="selected_suitcases__cards-container" id="selected-products-container"></div>
     </section>
 
-    <section class="offer">
-        <h2>Offer</h2>
-    </section>
+    <section class="offer" id="offer-container"></section>
 
     <section class="new-arrival">
-        <h2>New Products Arrival</h2>
+        <div class="new-arrival__header">
+            <h2 class="new-arrival__title">New Products Arrival</h2>
+            <p class="new-arrival__subtitle">Duis vestibulum elit vel neque pharetra</p>
+        </div>
+        <div class="new-arrival__cards-container" id="new-arrivals-container"></div>
+    </section>
+
+    <section class="grateful_customers">
+        <div class="grateful_customers__header">
+            <h2 class="grateful_customers__title">Our Grateful Customers</h2>
+            <p class="grateful_customers__subtitle">Duis vestibulum elit vel neque pharetra</p>
+        </div>
+        <div class="grateful_customers__cards-container" id="grateful-customers-container"></div>
     </section>
 </main>
 

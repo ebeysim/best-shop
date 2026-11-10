@@ -203,3 +203,83 @@
     max-width: 32ch;
   }
 }
+
+.travel_suitcases,
+.selected_suitcases,
+.new-arrival,
+.grateful_customers {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  &__header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  &__title {
+    font-size: vars.$font-size-h2;
+    font-weight: vars.$font-weight-bold;
+    color: vars.$color-text;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-size: vars.$font-size-base;
+    color: vars.$color-secondary-text;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__cards-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+
+    @include for-device("mobile-landscape") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include for-device("desktop") {
+      grid-template-columns: repeat(4, 1fr);
+      place-content: center;
+      place-items: center;
+    }
+  }
+}
+
+.grateful_customers {
+  &__cards-container {
+    grid-template-columns: 1fr;
+
+    @include for-device("tablet-portrait") {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include for-device("desktop") {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+.offer {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
