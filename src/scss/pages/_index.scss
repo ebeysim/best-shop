@@ -198,7 +198,7 @@
   &__banner-desc {
     font-size: vars.$font-size-sm;
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.85);
+    color: vars.$color-background;
     margin: 0;
     max-width: 32ch;
   }

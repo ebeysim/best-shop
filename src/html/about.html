@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../dist/css/main.css" />
     <script src="../js/cart.js" defer></script>
     <script src="../js/header.js" defer></script>
+    <script type="module" src="../js/about.js" defer></script>
 </head>
 <body class="about-page">
 
@@ -57,7 +58,41 @@
 </header>
 
 <main class="main-content">
-    <h1>About Us</h1>
+    <!-- 1. Hero Banner -->
+    <section id="hero-container"></section>
+
+    <!-- 2. Features / Pink Mini-Cards (Rendered via TypeScript .map) -->
+    <section class="about-features">
+        <div class="about-features__cards-container" id="about-features-container"></div>
+    </section>
+
+    <!-- 3. New Arrivals Every Week -->
+    <section class="about-arrivals">
+        <div class="about-arrivals__text">
+            <h2 class="about-arrivals__title">New Arrivals Every Week</h2>
+            <p class="about-arrivals__body">
+                Duis vestibulum elit vel neque pharetra vulputate. Quisque scelerisque nisi urna. Duis rutrum non risus in imperdiet. Proin molestie accumsan nulla sit. Quisque scelerisque nisi urnauis rutrum.
+            </p>
+            <p class="about-arrivals__body">
+                Vitrumuis vestibulum elit vel neque pharetra vulputate. Quisque scelerisque nisi urna. Duis vestibulum elit vel neque pharetra vulputateuisque scelerisque nisi urna.
+            </p>
+            <a class="btn" href="catalog.html">See All Models</a>
+        </div>
+        <div class="about-arrivals__image">
+            <img src="../assets/images/about/new arrivals image.jpg" alt="Traveler walking with suitcase">
+        </div>
+    </section>
+
+    <!-- 4. Our Incredible Team (Rendered via TypeScript .map) -->
+    <section class="our_team">
+        <div class="our_team__header">
+            <h2 class="our_team__title">Our Incredible Team</h2>
+        </div>
+        <div class="our_team__cards-container" id="team-container"></div>
+    </section>
+
+    <!-- 5. Reused Offer Of The Month Section -->
+    <section class="offer" id="offer-container"></section>
 </main>
 
 <footer class="site-footer" id="footer-root" aria-label="Footer">

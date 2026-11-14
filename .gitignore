@@ -1,3 +1,7 @@
 dist
+src/js/components/
+src/js/services/
+src/js/types/
+src/js/utils/
 node_modules
 package-lock.json

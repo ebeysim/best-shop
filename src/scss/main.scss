@@ -13,6 +13,9 @@
 @use "components/travel-card";
 @use "components/offer-card";
 @use "components/customer-card";
+@use "components/feature-mini-card";
+@use "components/team-card";
+@use "components/hero-section";
 
 // 4. Pages
 @use "pages/index";
@@ -20,3 +23,4 @@
 @use "pages/product-details";
 @use "pages/about";
 @use "pages/cart";
+@use "pages/contact";

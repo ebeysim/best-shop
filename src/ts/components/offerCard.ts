@@ -8,6 +8,15 @@ export interface OfferCardProps {
   buttonText: string;
   className?: string;
 }
+export const offerData = {
+  imageUrl: 'assets/images/home/offer of the month image.png',
+  altText: '50% Discount Offer',
+  discount: '50%',
+  discountSubtitle: 'Curabitur vulputate arcu odio, ac facilisis diam.',
+  title: 'Offer Of The Month',
+  description: 'Curabitur vulputate arcu odio, ac facilisis diam accumsan ut. Ut imperdiet et leo in vulputate.',
+  buttonText: 'Get Offer Today',
+};
 
 export function createOfferCard(props: OfferCardProps): HTMLElement {
   const card = document.createElement('article');

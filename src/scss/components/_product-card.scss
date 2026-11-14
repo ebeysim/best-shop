@@ -3,6 +3,7 @@
 
 .product-card {
   position: relative;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
   background-color: vars.$color-background;

@@ -1,0 +1,41 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as vars;
+
+.page-hero {
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.25rem;
+  color: vars.$color-secondary;
+
+  @include for-device("mobile-landscape"){
+    min-height: 400px;
+    padding: 4rem 1.5rem;
+  }
+
+  @include for-device("tablet-landscape"){
+    min-height: 460px;
+  }
+
+  &__content {
+    max-width: 640px;
+  }
+
+  &__title {
+    font-size: vars.$font-size-h1;
+    font-weight: vars.$font-weight-bold;
+    margin-bottom: 0.875rem;
+  }
+
+  &__subtitle {
+    font-size: vars.$font-size-sm;
+    line-height: 1.6;
+    color: vars.$color-secondary;
+  }
+}

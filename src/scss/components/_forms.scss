@@ -1,0 +1,83 @@
+@use "../abstracts/variables" as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__label {
+    font-family: $font-primary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    color: $color-text;
+  }
+
+  &__required {
+    color: $color-accent;
+  }
+
+  &__input,
+  &__textarea,
+  &__select {
+    width: 100%;
+    font-family: $font-primary;
+    font-size: $font-size-sm;
+    color: $color-text;
+    background-color: $color-background;
+    border: 1px solid $color-accent;
+    padding: 0.65rem 0.875rem;
+    outline: none;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+
+    &:focus {
+      box-shadow: 0 0 0 2px rgba(185, 39, 112, 0.2);
+    }
+
+    &::placeholder {
+      color: $color-secondary-text;
+    }
+
+    &--invalid{
+      border-color: $color-error;
+      box-shadow: 0 0 0 2px rgba($color-error, 0.15);
+    }
+    &:focus ~ .form__error:not(:empty) {
+      display: block;
+    }
+  }
+
+  &__textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  &__submit {
+    align-self: flex-start;
+    margin-top: 0.25rem;
+    padding: 0.75rem 2rem;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  &__status {
+    font-size: $font-size-sm;
+    color: $color-accent;
+    font-weight: $font-weight-bold;
+  }
+  &__error {
+    display: none;
+    font-family: $font-primary;
+    font-size: $font-size-xs;
+    color: $color-error;
+    min-height: 1em;
+  }
+}

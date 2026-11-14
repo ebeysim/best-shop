@@ -1,6 +1,39 @@
 @use "sass:map";
 @use "variables" as vars;
 
+@mixin cards-section-grid(
+  $tablet-cols: 2,
+  $desktop-cols: 4,
+  $max-width: 1200px
+) {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 3rem 1.25rem;
+
+  @include for-device("mobile-landscape") {
+    padding: 4rem 1.5rem;
+  }
+
+  @include for-device("tablet-landscape") {
+    padding: 5rem 1.5rem;
+  }
+
+  &__cards-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    justify-items: center;
+
+    @include for-device("mobile-landscape") {
+      grid-template-columns: repeat($tablet-cols, 1fr);
+      gap: 2.5rem;
+    }
+
+    @include for-device("tablet-landscape") {
+      grid-template-columns: repeat($desktop-cols, 1fr);
+    }
+  }
+}
 
 // Primary responsive mixin using min-width
 @mixin for-device($device) {

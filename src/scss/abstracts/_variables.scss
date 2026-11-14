@@ -30,6 +30,7 @@
   --color-secondary-text: #504E4A;
   --color-yellow: #F5B423;
   --color-form-label: #504E4A;
+  --color-error: #d93025;
 }
 
 // SCSS shortcuts mapped to CSS variables
@@ -50,6 +51,7 @@ $color-secondary-text: var(--color-secondary-text);
 $color-yellow: var(--color-yellow);
 $font-weight-normal: var(--font-weight-normal);
 $font-weight-bold: var(--font-weight-bold);
+$color-error: var(--color-error);
 
 // Screen size breakpoints
 $breakpoints: (
