@@ -7,6 +7,12 @@
 :root {
   --font-family-base: "Montserrat", sans-serif;
 
+
+  --space-inline: clamp(1rem, 0.5rem + 2vw, 2rem);
+  --space-section: clamp(2rem, 1rem + 3vw, 3rem);
+  --space-section-large: clamp(3rem, 1rem + 5vw, 5rem);
+
+
   // Heading fluid-font() font sizes
   --font-size-h1: #{fluid-font(32px, 50px)};       // ~32px to 50px
   --font-size-h2: #{fluid-font(26px, 40px)};   // ~26px to 40px

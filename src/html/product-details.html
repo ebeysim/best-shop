@@ -1,10 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cart | Suitcase E-Shop</title>
+    <link rel="stylesheet" href="../../dist/css/main.css" />
+
+    <script type="module" src="../js/main.js" defer></script>
+    <script type="module" src="../js/product.js" defer></script>
 
 </head>
 
-<body>
-<h1>Product</h1>
+<body class="cart-page">
+<header id="header-root"></header>
+
+<main class="main-content">
+        <!-- Top Product Overview (2-Column Desktop, Stacked Mobile) -->
+        <section class="product-overview" id="product-overview" aria-live="polite">
+            <!-- Left: Image Carousel & 4 Thumbnails -->
+            <div class="product-gallery">
+                <div class="product-gallery__main">
+                    <img
+                            src=""
+                            alt=""
+                            class="product-gallery__main-img"
+                            id="product-main-image"
+                    />
+                </div>
+                <div class="product-gallery__thumbs" id="product-thumbs" role="group" aria-label="Product image thumbnails"></div>
+            </div>
+
+            <!-- Right: Product Info, Static Selects, Quantity & Add to Cart -->
+            <div class="product-info">
+                <h1 class="product-info__title" id="product-title">Loading product...</h1>
+
+                <div class="product-info__meta">
+                    <span class="product-info__stars" id="product-rating-stars" aria-label="Product rating"></span>
+                    <span class="product-info__review-count" id="product-review-count">(1 Clients Review)</span>
+                </div>
+
+                <p class="product-info__price" id="product-price">$0</p>
+
+                <div class="product-info__summary" id="product-short-desc"></div>
+
+                <!-- Static Option Selectors (using global .form classes) -->
+                <div class="product-info__options">
+                    <div class="form__group">
+                        <label class="form__label" for="detail-size">Size</label>
+                        <select class="form__select" id="detail-size" name="size">
+                            <option value="">Choose option</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                        </select>
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="detail-color">Color</label>
+                        <select class="form__select" id="detail-color" name="color">
+                            <option value="">Choose option</option>
+                            <option value="red">Red</option>
+                            <option value="yellow">Yellow</option>
+                            <option value="grey">Grey</option>
+                            <option value="black">Black</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="pink">Pink</option>
+                        </select>
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="detail-category">Category</label>
+                        <select class="form__select" id="detail-category" name="category">
+                            <option value="">Choose option</option>
+                            <option value="carry-ons">Carry-ons</option>
+                            <option value="suitcases">Suitcases</option>
+                            <option value="luggage sets">Luggage Sets</option>
+                            <option value="kids' luggage">Kids' Luggage</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Quantity Stepper + Add to Cart Button -->
+                <div class="product-info__purchase">
+                    <div class="quantity-stepper" role="group" aria-label="Product quantity">
+                        <button type="button" class="quantity-stepper__btn" id="qty-minus" aria-label="Decrease quantity">−</button>
+                        <input
+                                type="number"
+                                class="quantity-stepper__input"
+                                id="qty-input"
+                                value="1"
+                                min="1"
+                                aria-label="Quantity"
+                        />
+                        <button type="button" class="quantity-stepper__btn" id="qty-plus" aria-label="Increase quantity">+</button>
+                    </div>
+
+                    <button type="button" class="btn btn--primary product-info__add-btn" id="add-to-cart-btn">
+                        Add To Cart
+                    </button>
+                </div>
+
+                <!-- Payment Methods Bar -->
+                <div class="product-info__payment">
+                    <span class="product-info__payment-label">Payment:</span>
+                    <div class="product-info__payment-icons" aria-label="Accepted payment methods">
+                        <span>VISA</span>
+                        <span>AMERICAN EXPRESS</span>
+                        <span>MasterCard</span>
+                        <span>PayPal</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabbed Menu: DETAILS / REVIEWS / SHIPPING POLICY -->
+        <section class="product-tabs" aria-label="Product Information Tabs">
+            <div class="product-tabs__nav" role="tablist">
+                <button
+                        type="button"
+                        class="product-tabs__btn product-tabs__btn--active"
+                        role="tab"
+                        aria-selected="true"
+                        aria-controls="panel-details"
+                        id="tab-details"
+                        data-tab="details"
+                >
+                    DETAILS
+                </button>
+                <button
+                        type="button"
+                        class="product-tabs__btn"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="panel-reviews"
+                        id="tab-reviews"
+                        data-tab="reviews"
+                >
+                    REVIEWS
+                </button>
+                <button
+                        type="button"
+                        class="product-tabs__btn"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="panel-policy"
+                        id="tab-policy"
+                        data-tab="policy"
+                >
+                    SHIPPING POLICY
+                </button>
+            </div>
+
+            <!-- Tab 1: Details -->
+            <div class="product-tabs__panel" id="panel-details" role="tabpanel" aria-labelledby="tab-details">
+                <p>
+                    Vestibulum commodo sapien non elit porttitor, vitae volutpat nibh mollis. Nulla porta risus id neque tempor, in efficitur justo imperdiet. Etiam a ex at ante tincidunt imperdiet. Nunc congue ex vel nisl viverra, sit amet aliquet lectus ullamcorper. Praesent luctus lacus non lorem elementum, eu tristique sapien suscipit. Sed bibendum, ipsum nec viverra malesuada, erat nisi sodales purus, eget hendrerit dui ligula eu enim. Ut non est nisi. Pellentesque tristique pretium dolor eu commodo. Proin iaculis nibh vitae lectus mollis bibendum. Quisque varius eget urna sit amet luctus. Suspendisse potenti. Curabitur ac placerat est, sit amet sodales risus. Pellentesque viverra dui auctor, ullamcorper turpis pharetra, facilisis quam.
+                </p>
+                <p>
+                    Proin iaculis nibh vitae lectus mollis bibendum. Quisque varius eget urna sit amet luctus. Suspendisse potenti. Curabitur ac placerat est, sit amet sodales risus. Proin iaculis nibh vitae lectus mollis bibendum.
+                </p>
+                <p>
+                    Quisque varius eget urna sit amet luctus. Suspendisse potenti. Curabitur ac placerat est, sit amet sodales risus. Pellentesque viverra dui auctor, ullamcorper turpis pharetra, facilisis quam.
+                </p>
+            </div>
+
+            <!-- Tab 2: Reviews (2-Column Desktop: Existing Reviews Left, Add Review Form Right) -->
+            <div class="product-tabs__panel" id="panel-reviews" role="tabpanel" aria-labelledby="tab-reviews" hidden>
+                <div class="reviews-layout">
+                    <!-- Left: Reviews List -->
+                    <div class="reviews-list-col">
+                        <h2 class="reviews-list-col__heading" id="reviews-heading">1 review for Product</h2>
+                        <div class="reviews-list" id="reviews-list"></div>
+                    </div>
+
+                    <!-- Right: Add Review Form (Reuses Global .form Styles) -->
+                    <div class="reviews-form-col">
+                        <h2 class="reviews-form-col__heading">Add Review</h2>
+                        <p class="reviews-form-col__note">
+                            Your email address won't be shared with anybody. Required fields have the symbol <span class="form__required">*</span>
+                        </p>
+
+                        <form class="form" id="review-form" novalidate>
+                            <!-- Interactive Star Rating Selector -->
+                            <div class="review-rating-field">
+                                <span class="review-rating-field__label">RATE PRODUCT</span>
+                                <div class="review-rating-field__stars" id="review-star-picker" role="radiogroup" aria-label="Rate product from 1 to 5 stars">
+                                    <button type="button" data-rating="1" aria-label="1 star">☆</button>
+                                    <button type="button" data-rating="2" aria-label="2 stars">☆</button>
+                                    <button type="button" data-rating="3" aria-label="3 stars">☆</button>
+                                    <button type="button" data-rating="4" aria-label="4 stars">☆</button>
+                                    <button type="button" data-rating="5" aria-label="5 stars">☆</button>
+                                </div>
+                            </div>
+
+                            <div class="form__group">
+                  <textarea
+                          class="form__textarea"
+                          id="review-comment"
+                          name="comment"
+                          placeholder="Your Review*"
+                          aria-label="Your Review"
+                          required
+                  ></textarea>
+                            </div>
+
+                            <div class="reviews-form-row">
+                                <div class="form__group">
+                                    <input
+                                            type="text"
+                                            class="form__input"
+                                            id="review-name"
+                                            name="name"
+                                            placeholder="Your Name*"
+                                            aria-label="Your Name"
+                                            required
+                                    />
+                                </div>
+
+                                <div class="form__group">
+                                    <input
+                                            type="email"
+                                            class="form__input"
+                                            id="review-email"
+                                            name="email"
+                                            placeholder="Your Email*"
+                                            aria-label="Your Email"
+                                            required
+                                    />
+                                </div>
+                            </div>
+
+                            <label class="reviews-remember">
+                                <input type="checkbox" id="review-remember" />
+                                <span>Save my name, email, and website in this browser for when I leave another comment.</span>
+                            </label>
+
+                            <button type="submit" class="btn btn--primary form__submit">SUBMIT</button>
+
+                            <p class="form__status" id="review-form-status" role="status" aria-live="polite"></p>
+                            <p class="form__error" id="review-form-error" role="alert"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Shipping Policy -->
+            <div class="product-tabs__panel" id="panel-policy" role="tabpanel" aria-labelledby="tab-policy" hidden>
+                <p>
+                    Standard domestic orders are processed within 1–2 business days and delivered within 3–5 business days. Expedited shipping options are available at checkout for next-day or two-day delivery.
+                </p>
+                <p>
+                    All luggage sets and carry-on cases qualify for complimentary standard shipping on orders over $150. Returns and exchanges are accepted within 30 days of delivery in original unused condition.
+                </p>
+            </div>
+        </section>
+
+        <!-- Bottom Section: 4 Random "You May Also Like" Cards -->
+        <section class="related-products" aria-labelledby="related-heading">
+            <h2 class="related-products__title" id="related-heading">
+                <span>You May Also Like</span>
+            </h2>
+            <div class="related-products__grid" id="related-products-grid"></div>
+        </section>
+</main>
+
+<footer id="footer-root"></footer>
 </body>
+</html>

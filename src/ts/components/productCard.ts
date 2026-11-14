@@ -4,13 +4,18 @@ export interface ProductCardProps extends Pick<Product, 'id' | 'name' | 'imageUr
   altText?: string;
 }
 
-
-
 export function createProductCard(props: ProductCardProps): HTMLElement {
   const card = document.createElement('article');
   card.className = 'product-card';
   card.setAttribute('data-product-id', props.id);
   card.setAttribute('tabindex', '0');
+
+  if(props.salesStatus){
+    const tag = document.createElement('span');
+    tag.className = 'product-card__label';
+    tag.textContent = 'SALE';
+    card.appendChild(tag);
+  }
 
   const media = document.createElement('div');
   media.className = 'product-card__media';
@@ -42,29 +47,6 @@ export function createProductCard(props: ProductCardProps): HTMLElement {
   btn.className = 'btn btn--sm';
   btn.setAttribute('aria-label', 'Save to cart');
   btn.textContent = 'Save to Cart';
-
-  btn.addEventListener('click', (event: MouseEvent) => {
-    event.stopPropagation();
-    event.preventDefault();
-    const globalWindow = window as Window & {
-      cartStorage?: {
-        addToCart: (product: ProductCardProps, quantity?: number) => void;
-      };
-    };
-    globalWindow.cartStorage?.addToCart(props, 1);
-  });
-
-  const handleCardNavigation = () => {
-    window.location.href = `html/product-details.html?id=${encodeURIComponent(props.id)}`;
-  };
-
-  card.addEventListener('click', handleCardNavigation);
-  card.addEventListener('keydown', (event: KeyboardEvent) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      handleCardNavigation();
-    }
-  });
 
   footer.appendChild(price);
   footer.appendChild(btn);

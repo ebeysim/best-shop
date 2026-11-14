@@ -25,11 +25,16 @@ export interface Product {
   blocks: ProductBlock[];
 }
 
+export type SortOption = 'default' | 'price-asc' | 'price-desc' | 'popularity' | 'rating';
+
 export interface ProductQueryOptions {
-  category?: ProductCategory;
-  block?: ProductBlock;
   salesStatus?: boolean;
+  block?: string;
+  category?: string;
+  color?: string;
+  size?: string;
   search?: string;
+  sortBy?: SortOption;
   page?: number;
   limit?: number;
 }

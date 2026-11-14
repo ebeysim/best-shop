@@ -80,4 +80,30 @@
     color: $color-error;
     min-height: 1em;
   }
+  &__password-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input--password {
+    padding-right: 2.75rem;
+  }
+
+  &__eye-btn {
+    position: absolute;
+    right: 0.75rem;
+    border: none;
+    background: transparent;
+    color: $color-secondary-text;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0.2rem;
+
+    &:hover,
+    &.is-visible {
+      color: $color-accent;
+    }
+  }
 }

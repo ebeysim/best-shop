@@ -1,13 +1,14 @@
-import type {Product, PaginatedProducts, ProductQueryOptions} from '../types/product.js';
+import type { Product, PaginatedProducts, ProductQueryOptions } from '../types/product.js';
 
 interface ProductsResponse {
     data: Product[];
 }
 
-const DATA_URL = './assets/data.json';
+const DATA_URL = window.location.pathname.includes('/src/html/')
+    ? '../assets/data.json'
+    : './assets/data.json';
 
 let cachedProducts: Product[] | null = null;
-
 
 async function loadAllProducts(): Promise<Product[]> {
     if (cachedProducts !== null) {
@@ -40,7 +41,6 @@ async function loadAllProducts(): Promise<Product[]> {
     throw new Error('Invalid products JSON structure');
 }
 
-
 export async function fetchProducts(
     options: ProductQueryOptions = {}
 ): Promise<PaginatedProducts> {
@@ -60,9 +60,17 @@ export async function fetchProducts(
                 return false;
             }
 
-            if (options.search !== undefined && options.search.trim() !== '') {
-                const term = options.search.toLowerCase().trim();
-                if (!product.name.toLowerCase().includes(term)) {
+            if (options.color !== undefined && product.color !== options.color) {
+                return false;
+            }
+
+            if (options.size !== undefined && product.size !== options.size) {
+                return false;
+            }
+
+            if (options.search !== undefined && String(options?.search).trim() !== '') {
+                const searchTerm = String(options?.search || "").trim().toLowerCase();
+                if (!product.name.toLowerCase().includes(searchTerm)) {
                     return false;
                 }
             }
@@ -70,21 +78,36 @@ export async function fetchProducts(
             return true;
         });
 
-        const total = filtered.length;
+        // Apply sorting before pagination slicing
+        const sorted = [...filtered];
+        switch (options.sortBy) {
+            case 'price-asc':
+                sorted.sort((a, b) => a.price - b.price);
+                break;
+            case 'price-desc':
+                sorted.sort((a, b) => b.price - a.price);
+                break;
+            case 'popularity':
+                sorted.sort((a, b) => (b.popularity ?? 0) - (a.popularity ?? 0));
+                break;
+            case 'rating':
+                sorted.sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
+                break;
+        }
 
-        // If limit is provided, slice the results for pagination
+        const total = sorted.length;
+
         if (options.limit !== undefined && options.limit > 0) {
-            const page = Math.max(1, options.page ?? 1);
             const totalPages = Math.max(1, Math.ceil(total / options.limit));
+            const page = Math.min(Math.max(1, options.page ?? 1), totalPages);
             const startIndex = (page - 1) * options.limit;
-            const items = filtered.slice(startIndex, startIndex + options.limit);
+            const items = sorted.slice(startIndex, startIndex + options.limit);
 
             return { items, total, page, totalPages };
         }
 
-        // Without limit, return all matching items on page 1
         return {
-            items: filtered,
+            items: sorted,
             total,
             page: 1,
             totalPages: 1,
@@ -95,9 +118,6 @@ export async function fetchProducts(
     }
 }
 
-/**
- * Fetches a single product by its ID.
- */
 export async function fetchProductById(id: string): Promise<Product | undefined> {
     try {
         const allProducts = await loadAllProducts();

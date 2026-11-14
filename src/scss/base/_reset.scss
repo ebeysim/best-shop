@@ -36,3 +36,16 @@ h4 {
 small {
   font-size: var(--font-size-sm);
 }
+
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.main-content > .hero,
+.main-content > .page-hero {
+  width: 100vw;
+}

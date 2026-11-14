@@ -280,3 +280,52 @@
     }
   }
 }
+
+.login-modal {
+  width: min(92vw, 460px);
+  padding: 2.5rem 2.25rem;
+  border: none;
+  background-color: vars.$color-background;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: vars.$font-size-xs;
+  }
+
+  &__remember {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: vars.$color-secondary-text;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      accent-color: vars.$color-accent;
+      cursor: pointer;
+    }
+  }
+
+  &__forgot {
+    color: vars.$color-accent;
+    font-weight: vars.$font-weight-bold;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__submit {
+    align-self: stretch;
+    width: 100%;
+    text-align: center;
+  }
+}

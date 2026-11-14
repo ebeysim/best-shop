@@ -1,0 +1,332 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.catalog-page {
+  padding-top: 2rem;
+}
+
+// 1. Hover Dropdown Filters
+.catalog-filters {
+  margin-bottom: 2rem;
+
+  &__top-bar {
+    display: flex;
+    justify-content: flex-start;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__panel {
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  // Magenta top & bottom divider lines matching the screenshot
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 0 2rem;
+    border-top: 2px solid $color-accent;
+    border-bottom: 2px solid $color-accent;
+
+    @include for-device("tablet-portrait") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include for-device("tablet-landscape") {
+      grid-template-columns: repeat(3, minmax(180px, 240px)) auto;
+      align-items: start;
+      gap: 1.75rem;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+
+    .btn {
+      min-width: 165px;
+      padding: 0.75rem 1.5rem;
+      font-size: $font-size-xs;
+      font-weight: $font-weight-bold;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+  }
+}
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+
+  &__label {
+    font-family: $font-primary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    color: #333;
+  }
+
+  &--checkbox {
+    align-items: flex-start;
+  }
+
+  &__checkbox {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.45rem;
+    accent-color: #111;
+    cursor: pointer;
+  }
+}
+
+.filter-dropdown {
+  position: relative;
+  width: 100%;
+
+  &__trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    color: #888;
+    font-family: $font-primary;
+    font-size: $font-size-xs;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+
+    // Highlighted state when an option is chosen
+    &--active {
+      border-color: $color-accent;
+      background-color: rgba($color-accent, 0.06);
+      color: $color-accent;
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  &__arrow {
+    font-size: 0.9rem;
+    line-height: 1;
+    color: #333;
+  }
+
+  &__menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 25;
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    list-style: none;
+    padding: 0.35rem 0;
+    margin: 0;
+
+    button {
+      width: 100%;
+      text-align: left;
+      padding: 0.5rem 0.9rem;
+      border: none;
+      background: transparent;
+      font-size: $font-size-xs;
+      color: #333;
+      cursor: pointer;
+
+      &:hover,
+      &.is-selected {
+        background-color: rgba($color-accent, 0.1);
+        color: $color-accent;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+
+  // Open on hover (and keyboard focus-within for accessibility)
+  &:hover &__menu,
+  &:focus-within &__menu {
+    display: block;
+  }
+}
+
+// 2. Main + Sidebar Layout (Mobile-First)
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+
+  @include for-device("desktop") {
+    grid-template-columns: 1fr 290px; // 3-card grid left + sidebar right
+    align-items: start;
+  }
+}
+
+// 3. Toolbar (Showing X–Y of Z + Sort Select)
+.catalog-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  @include for-device("tablet-portrait") {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__count {
+    font-size: $font-size-sm;
+    color: #555;
+    margin: 0;
+  }
+
+  &__sort {
+    padding: 0.55rem 0.9rem;
+    border: 1px solid #dcdcdc;
+    background: #fff;
+    font-size: $font-size-sm;
+    min-width: 190px;
+  }
+}
+
+// 4. Product Grid (1 col mobile -> 2 col tablet -> 3 col desktop)
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+
+  @include for-device("tablet-landscape") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// 5. Pagination
+.catalog-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+
+  &__page,
+  &__nav {
+    min-width: 2.25rem;
+    height: 2.25rem;
+    padding: 0 0.75rem;
+    border: 1px solid #dcdcdc;
+    background: #fff;
+    font-size: $font-size-sm;
+    cursor: pointer;
+
+    &--active {
+      background: $color-accent;
+      border-color: $color-accent;
+      color: #fff;
+      font-weight: $font-weight-bold;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// 6. Sidebar (Search + Top Best Sets)
+.catalog-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.catalog-search {
+  display: flex;
+  border: 1px solid #dcdcdc;
+
+  &__input {
+    flex: 1;
+    border: none;
+    padding: 0.65rem 0.9rem;
+    font-size: $font-size-sm;
+    outline: none;
+  }
+
+  &__btn {
+    padding: 0 0.85rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.top-best-sets {
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    margin-bottom: 1.25rem;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.best-set-item {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  color: inherit;
+
+  &__img {
+    width: 68px;
+    height: 68px;
+    object-fit: cover;
+    background: #f5f5f5;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    font-size: $font-size-xs;
+    line-height: 1.35;
+    margin: 0 0 0.25rem;
+  }
+
+  &__rating {
+    color: $color-yellow;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  &__price {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    margin: 0.2rem 0 0;
+  }
+}
+
+// 7. Not Found Modal
+.search-modal {
+  border: none;
+  padding: 2rem;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
