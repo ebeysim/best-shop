@@ -58,6 +58,10 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: $space-control-block;
+    margin: 0;
+    min-width: 0;
+    padding: 0;
+    border: 0;
   }
 
   &__thumb-btn {
@@ -182,13 +186,6 @@
   }
 }
 
-// Quantity Stepper (- 1 +)
-.product-gallery__thumbs {
-  margin: 0;
-  min-width: 0;
-  padding: 0;
-  border: 0;
-}
 
 .product-gallery__thumbs,
 .quantity-stepper {
