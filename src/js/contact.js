@@ -79,8 +79,6 @@ export function initContactForm() {
 
         const formData = new FormData(form);
         const submission = Object.fromEntries(formData.entries());
-        console.log('Contact form submitted:', submission);
-
         form.reset();
         emailInput.classList.remove('form__input--invalid');
         emailError.textContent = '';

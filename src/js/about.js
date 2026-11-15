@@ -1,18 +1,8 @@
 import { createFeatureMiniCard } from './components/miniFeaturesCard.js';
 import { createTeamCard } from './components/teamMemberCard.js';
-import { createOfferCard } from './components/offerCard.js';
+import { createOfferCard, offerData } from './components/offerCard.js';
 import { createPageHero } from './components/heroSection.js';
 
-
-export const offerData = {
-    imageUrl: '../assets/images/offer of the month image.png',
-    altText: '50% Discount Offer',
-    discount: '50%',
-    discountSubtitle: 'Curabitur vulputate arcu odio, ac facilisis diam.',
-    title: 'Offer Of The Month',
-    description: 'Curabitur vulputate arcu odio, ac facilisis diam accumsan ut. Ut imperdiet et leo in vulputate.',
-    buttonText: 'Get Offer Today',
-};
 
 const ABOUT_FEATURES = [
     {
@@ -90,7 +80,10 @@ export function renderOfferSection() {
     const container = document.getElementById('offer-container');
     if (container) {
         container.innerHTML = '';
-        container.append(createOfferCard(offerData));
+        container.append(createOfferCard({
+            ...offerData,
+            imageUrl: `../${offerData.imageUrl}`,
+        }));
     }
 }
 

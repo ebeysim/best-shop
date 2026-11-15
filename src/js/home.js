@@ -1,6 +1,6 @@
 import { createTravelCard } from './components/travelCard.js';
 import { createProductCard } from './components/productCard.js';
-import { createOfferCard } from './components/offerCard.js';
+import { createOfferCard, offerData } from './components/offerCard.js';
 import { createCustomerCard } from './components/customerCard.js';
 import {fetchProducts} from "./services/productService.js";
 import {bindProductGridEvents} from "./utils/bindContainerEvent.js";
@@ -31,16 +31,6 @@ export const travelSuitcasesData = [
         description: 'Sed ipsum felis tristique egestas et convallis ac velit consequat.',
     },
 ];
-
-export const offerData = {
-    imageUrl: './assets/images/offer of the month image.png',
-    altText: '50% Discount Offer',
-    discount: '50%',
-    discountSubtitle: 'Curabitur vulputate arcu odio, ac facilisis diam.',
-    title: 'Offer Of The Month',
-    description: 'Curabitur vulputate arcu odio, ac facilisis diam accumsan ut. Ut imperdiet et leo in vulputate.',
-    buttonText: 'Get Offer Today',
-};
 
 export const gratefulCustomersData = [
     {

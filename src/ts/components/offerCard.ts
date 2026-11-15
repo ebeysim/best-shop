@@ -9,7 +9,7 @@ export interface OfferCardProps {
   className?: string;
 }
 export const offerData = {
-  imageUrl: 'assets/images/home/offer of the month image.png',
+  imageUrl: 'assets/images/offer of the month image.png',
   altText: '50% Discount Offer',
   discount: '50%',
   discountSubtitle: 'Curabitur vulputate arcu odio, ac facilisis diam.',

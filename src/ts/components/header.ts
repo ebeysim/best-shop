@@ -1,4 +1,4 @@
-export type PageName = 'home' | 'catalog' | 'about' | 'contact';
+export type PageName = 'home' | 'catalog' | 'about' | 'contact' | 'product' | 'cart';
 
 export interface HeaderProps {
     activePage: PageName;

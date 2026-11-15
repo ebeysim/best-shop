@@ -23,6 +23,8 @@ export interface Product {
   rating: number;
   popularity: number;
   blocks: ProductBlock[];
+  description?: string;
+  images?: string[];
 }
 
 export type SortOption = 'default' | 'price-asc' | 'price-desc' | 'popularity' | 'rating';

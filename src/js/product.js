@@ -1,6 +1,8 @@
 import { fetchProducts, fetchProductById } from "./services/productService.js";
 import { createProductCard } from "./components/productCard.js";
 import formatRatingStars from "./utils/formatRatingStars.js";
+import { bindProductGridEvents } from "./utils/bindContainerEvent.js";
+import { isValidEmail } from "./utils/validEmail.js";
 
 // Placeholder paths for the 3 static carousel angles & reviewer profile image (swap with your filenames)
 const DEFAULT_GALLERY_FALLBACKS = [
@@ -16,7 +18,6 @@ const DEFAULT_SHORT_DESCRIPTION = `
 `;
 
 let currentProduct = null;
-let relatedItems = [];
 let reviews = [];
 let selectedFormRating = 0;
 
@@ -186,27 +187,47 @@ function renderReviewsList(productName) {
 
     if (!listEl) return;
 
-    listEl.innerHTML = reviews
-        .map(
-            (rev) => `
-        <article class="review-item">
-          <img src="${rev.avatarUrl}" alt="${rev.author}" class="review-item__avatar" />
-          <div class="review-item__body">
-            <div class="review-item__header">
-              <div>
-                <span class="review-item__author">${rev.author}</span>
-                <span class="review-item__date">/ ${rev.date}</span>
-              </div>
-              <span class="review-item__stars" aria-label="${rev.rating} out of 5 stars">
-                ${formatRatingStars(rev.rating)}
-              </span>
-            </div>
-            <p class="review-item__comment">${rev.comment}</p>
-          </div>
-        </article>
-      `
-        )
-        .join("");
+    const reviewElements = reviews.map((review) => {
+        const article = document.createElement("article");
+        article.className = "review-item";
+
+        const avatar = document.createElement("img");
+        avatar.src = review.avatarUrl;
+        avatar.alt = review.author;
+        avatar.className = "review-item__avatar";
+
+        const body = document.createElement("div");
+        body.className = "review-item__body";
+
+        const header = document.createElement("div");
+        header.className = "review-item__header";
+
+        const authorDate = document.createElement("div");
+        const author = document.createElement("span");
+        author.className = "review-item__author";
+        author.textContent = review.author;
+
+        const date = document.createElement("span");
+        date.className = "review-item__date";
+        date.textContent = `/ ${review.date}`;
+        authorDate.append(author, date);
+
+        const stars = document.createElement("span");
+        stars.className = "review-item__stars";
+        stars.setAttribute("aria-label", `${review.rating} out of 5 stars`);
+        stars.textContent = formatRatingStars(review.rating);
+        header.append(authorDate, stars);
+
+        const comment = document.createElement("p");
+        comment.className = "review-item__comment";
+        comment.textContent = review.comment;
+
+        body.append(header, comment);
+        article.append(avatar, body);
+        return article;
+    });
+
+    listEl.replaceChildren(...reviewElements);
 }
 
 function bindStarPicker() {
@@ -247,9 +268,9 @@ function bindReviewForm(productName) {
         const comment = commentInput.value.trim();
         const author = nameInput.value.trim();
         const email = emailInput.value.trim();
-        const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        const emailIsValid = isValidEmail(email);
 
-        if (selectedFormRating === 0 || !comment || !author || !isValidEmail) {
+        if (selectedFormRating === 0 || !comment || !author || !emailIsValid) {
             if (errorEl) {
                 errorEl.textContent =
                     "Please select a star rating and fill in your review, name, and a valid email address.";
@@ -291,38 +312,18 @@ function renderRelatedProducts(allProducts, currentId) {
     const grid = document.getElementById("related-products-grid");
     if (!grid) return;
 
-    relatedItems = allProducts
+    const relatedItems = allProducts
         .filter((p) => (String(p.id) !== String(currentId) && p.category !== "luggage sets"))
         .sort(() => Math.random() - 0.5)
         .slice(0, 4);
 
     grid.innerHTML = "";
-    console.log(relatedItems);
     const cards = relatedItems.map(pr => createProductCard({
         ...pr,
         imageUrl: `../${pr.imageUrl}`,
     }));
     grid.append(...cards);
-
-    grid.addEventListener("click", (event) => {
-        const target = event.target;
-        if (!(target instanceof Element)) return;
-
-        const card = target.closest(".product-card");
-        if (!card) return;
-
-        const id = card.getAttribute("data-product-id");
-        const product = relatedItems.find((item) => String(item.id) === String(id));
-        if (!product) return;
-
-        if (target.closest(".product-card__btn, .btn, button")) {
-            event.stopPropagation();
-            window.cartStorage?.addToCart(product, 1);
-            return;
-        }
-
-        window.location.href = `product-details.html?id=${encodeURIComponent(product.id)}`;
-    });
+    bindProductGridEvents(grid);
 }
 
 initProductDetails();

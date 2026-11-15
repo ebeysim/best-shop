@@ -34,12 +34,12 @@
     "forceConsistentCasingInFileNames": true,
     // Recommended Options
     "strict": true,
-    "allowJs": true,
+    "allowJs": false,
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/ts/**/*"]
 }

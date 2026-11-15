@@ -5,7 +5,8 @@ const STORAGE_KEY = "cart";
 
 window.cartStorage = {
   getCart() {
-    return getStorageItem(STORAGE_KEY) || [];
+    const storedCart = getStorageItem(STORAGE_KEY, []);
+    return Array.isArray(storedCart) ? storedCart : [];
   },
 
   saveCart(items) {
