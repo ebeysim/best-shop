@@ -21,7 +21,7 @@ function initLayout() {
 
     const footerRoot = document.getElementById('footer-root');
     if (footerRoot) {
-        footerRoot.outerHTML = createFooter({ isRoot });
+        footerRoot.outerHTML = createFooter(isRoot);
     }
 }
 
