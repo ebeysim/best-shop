@@ -1,5 +1,5 @@
 export function createFooter(isRoot: boolean = true): string {
-    const rootPrefix = isRoot ? './src/' : '../';
+    const rootPrefix = isRoot ? './' : '../';
 
     return `
     <footer class="site-footer">
