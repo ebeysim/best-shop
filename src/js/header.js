@@ -20,18 +20,32 @@ window.cartStorage = {
     }
 
     const cart = this.getCart();
-    const existingItem = cart.find((item) => item && item.id === product.id);
+    const existingItem = cart.find((item) => {
+      if (!item || item.name !== product.name) return false;
+      const sameVariant = item.size === product.size && item.color === product.color;
+      const legacySameProduct =
+        item.id === product.id &&
+        (item.size === undefined || item.size === null || item.color === undefined || item.color === null);
+      return sameVariant || legacySameProduct;
+    });
     const addQty = Number.isInteger(quantity) && quantity > 0 ? quantity : 1;
 
     if (existingItem) {
       existingItem.quantity =
           (Number.isInteger(existingItem.quantity) ? existingItem.quantity : 0) + addQty;
+      existingItem.id = product.id;
+      existingItem.price = product.price;
+      existingItem.imageUrl = product.imageUrl;
+      existingItem.size = product.size;
+      existingItem.color = product.color;
     } else {
       cart.push({
         id: product.id,
         name: product.name,
         price: product.price,
         imageUrl: product.imageUrl,
+        size: product.size,
+        color: product.color,
         quantity: addQty,
       });
     }

@@ -1,3 +1,5 @@
+import { setStorageItem } from '../utils/storage.js';
+
 export interface OfferCardProps {
   imageUrl: string;
   altText?: string;
@@ -71,6 +73,10 @@ export function createOfferCard(props: OfferCardProps): HTMLElement {
   button.type = 'button';
   button.className = 'btn';
   button.textContent = props.buttonText;
+  button.addEventListener('click', () => {
+    setStorageItem('cartDiscount', 50);
+    alert('Discount applied! You will receive a 50% discount on your next purchase.');
+  });
 
   right.appendChild(title);
   right.appendChild(description);

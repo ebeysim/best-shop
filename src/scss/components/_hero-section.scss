@@ -4,23 +4,17 @@
 .page-hero {
   position: relative;
   width: 100%;
-  min-height: 320px;
+  min-height: 200px;
+  height: auto;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;  
 
   @include flex-center;
 
   text-align: center;
   padding: vars.$space-hero-block vars.$space-hero-inline;
   color: vars.$color-secondary;
-
-  @include for-device("mobile-landscape"){
-    min-height: 400px;
-  }
-
-  @include for-device("tablet-landscape"){
-    min-height: 460px;
-  }
 
   &__content {
     max-width: vars.$max-width-hero-copy;

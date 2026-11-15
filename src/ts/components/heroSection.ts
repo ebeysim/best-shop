@@ -1,6 +1,6 @@
 export interface PageHeroProps {
     title: string;
-    subtitle: string;
+    subtitle?: string;
     backgroundImageUrl: string;
 }
 
@@ -17,7 +17,7 @@ export function createPageHero({
     section.innerHTML = `
     <div class="page-hero__content">
       <h1 class="page-hero__title">${title}</h1>
-      <p class="page-hero__subtitle">${subtitle}</p>
+      ${subtitle ? `<p class="page-hero__subtitle">${subtitle}</p>` : ''}
     </div>
   `;
 
