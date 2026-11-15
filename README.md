@@ -3,6 +3,10 @@
 
 A responsive, multi-page static e-commerce frontend. Product data is loaded from local JSON.
 
+## Live Demo
+
+**[View Live Site](https://ebeysim.github.io/best-shop/src/index.html)**
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) with npm
