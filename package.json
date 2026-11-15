@@ -15,6 +15,7 @@
     "compile:sass": "sass src/scss:dist/css --no-source-map",
     "compile:ts": "tsc",
     "compile": "npm-run-all compile:sass compile:ts",
+    "build": "npm run compile",
     "watch:sass": "sass src/scss:dist/css --watch",
     "watch:ts": "tsc --watch",
     "serve": "live-server --port=3000 --watch=dist,src/**/*.html",
