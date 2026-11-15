@@ -3,6 +3,7 @@
 // 2. Base styles (Fonts and Reset)
 @use "base/fonts";
 @use "base/reset";
+@use "base/base";
 
 // 3. Layouts & Components (Header, Footer, Buttons, etc.)
 @use "layouts/header";

@@ -9,16 +9,16 @@
   background-color: $color-secondary;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: $space-2xl;
   justify-content: center;
   align-items: center;
-  padding: 2rem clamp(2rem, 10vw, 10rem);
+  padding: $space-2xl $space-home-hero-inline;
 
   &__text{
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: $space-xl;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -31,11 +31,11 @@
     }
 
     p{
-
       color: $color-secondary-text;
       font-size: $font-size-base;
     }
   }
+
   &__image{
     margin-right: 10%;
     width: 60%;
@@ -50,6 +50,7 @@
 
   @include for-device("tablet-landscape"){
     flex-direction: row;
+
     &__text{
       text-align: left;
 
@@ -61,6 +62,7 @@
       }
 
     }
+
     &__image{
       margin: 0;
       width: 90%;
@@ -73,38 +75,38 @@
   flex-direction: column;
   width: 100%;
   background-color: $color-background;
-  border-radius: 1px;
+  border-radius: $radius-xs;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: $shadow-section;
 
   @include for-device("desktop") {
     flex-direction: row;
-    max-width: 980px;
+    max-width: $max-width-home-discount;
     margin-inline: auto;
-    margin-top: clamp(-5rem, -4vw, -2rem);
+    margin-top: $space-discount-overlap;
     position: relative;
-    z-index: 10;
+    z-index: $z-overlay;
   }
 
   &__review {
     flex: 1.1;
     display: flex;
     flex-direction: column;
-    padding: clamp(1.5rem, 4vw, 3rem);
+    padding: $space-hero-review;
     background-color: $color-background;
   }
 
   &__author {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: $space-lg;
+    margin-bottom: $space-xl;
   }
 
   &__avatar {
     width: 48px;
     height: 48px;
-    border-radius: 50%;
+    border-radius: $radius-circle;
     overflow: hidden;
     flex-shrink: 0;
 
@@ -118,18 +120,18 @@
   &__meta {
     display: flex;
     flex-direction: column;
-    gap: 0.15rem;
+    gap: $space-3xs;
   }
 
   &__name {
-    font-size: var(--font-size-md);
+    font-size: $font-size-base;
     font-weight: $font-weight-bold;
     color: $color-text;
     margin: 0;
   }
 
   &__role {
-    font-size: var(--font-size-sm);
+    font-size: $font-size-sm;
     color: $color-secondary-text;
     margin: 0;
   }
@@ -138,14 +140,14 @@
     font-size: $font-size-h2;
     font-weight: $font-weight-bold;
     color: $color-text;
-    margin-bottom: 1rem;
+    margin-bottom: $space-lg;
   }
 
   &__body {
     font-size: $font-size-sm;
     line-height: 1.5;
     color: $color-secondary-text;
-    margin-bottom: 0.75rem;
+    margin-bottom: $space-md;
 
     &--highlight {
       margin-bottom: 0;
@@ -158,11 +160,10 @@
     position: relative;
     display: flex;
     align-items: flex-end;
-
     background:
-            linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6)),
+            linear-gradient($color-overlay-backdrop, $color-overlay-dark),
             url("../../src/assets/images/home/suitcases_main_banner.png") center / cover no-repeat;
-    padding: clamp(2rem, 4vw, 3rem);
+    padding: $space-2xl $space-4xl;
     min-height: 320px;
 
     @include for-device("desktop") {
@@ -174,9 +175,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: $space-lg;
     color: $color-background;
-    z-index: 1;
+    z-index: $z-base;
   }
 
   &__banner-title {
@@ -191,7 +192,7 @@
     line-height: 1.5;
     color: $color-background;
     margin: 0;
-    max-width: 32ch;
+    max-width: $max-width-home-copy;
   }
 }
 
@@ -200,21 +201,21 @@
 .new-arrival,
 .grateful_customers {
   width: 100%;
-  max-width: 1200px;
+  max-width: $max-width-content;
   margin-inline: auto;
-  padding-inline: clamp(1rem, 3vw, 2rem);
+  padding-inline: $space-inline;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: $space-2xl;
 
   &__header {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    max-width: 600px;
+    gap: $space-sm;
+    max-width: $max-width-content-narrow;
     margin-inline: auto;
   }
 
@@ -237,7 +238,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: $space-xl;
 
     @include for-device("mobile-landscape") {
       grid-template-columns: repeat(2, 1fr);
@@ -267,9 +268,9 @@
 
 .offer {
   width: 100%;
-  max-width: 1200px;
+  max-width: $max-width-content;
   margin-inline: auto;
-  padding-inline: clamp(1rem, 3vw, 2rem);
+  padding-inline: $space-inline;
   display: flex;
   flex-direction: column;
   align-items: center;

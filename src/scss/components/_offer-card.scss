@@ -6,50 +6,46 @@
   width: 100%;
   display: flex;
   overflow: hidden;
-  border-radius: 2px;
-  background-color: #1a1a1a;
+
+  @include card-surface(vars.$color-neutral-dark);
+
   min-height: 280px;
 
   &__media {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    @include absolute-fill;
+
     overflow: hidden;
   }
 
   &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    @include cover-image;
+
     object-position: center;
   }
 
   &__overlay {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background: rgb(0 0 0 / 55%);
+    @include absolute-fill;
+
+    background: vars.$color-overlay-strong;
     pointer-events: none;
   }
 
   &__content {
     position: relative;
-    z-index: 1;
+    z-index: vars.$z-base;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 2rem;
-    padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 6vw, 4.5rem);
-    color: #fff;
+    gap: vars.$space-2xl;
+    padding: vars.$space-offer-block vars.$space-offer-inline;
+    color: vars.$color-background;
 
     @include for-device("tablet-portrait") {
       flex-direction: row;
       align-items: center;
-      gap: 3rem;
+      gap: vars.$space-4xl;
     }
   }
 
@@ -57,15 +53,15 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    max-width: 340px;
+    gap: vars.$space-md;
+    max-width: vars.$max-width-offer-copy;
   }
 
   &__discount {
-    font-size: clamp(3.5rem, 8vw, 6.5rem);
-    font-weight: 800;
+    font-size: vars.$font-size-display;
+    font-weight: vars.$font-weight-extrabold;
     line-height: 0.95;
-    color: #fff;
+    color: vars.$color-background;
     letter-spacing: -2px;
     margin: 0;
   }
@@ -73,9 +69,9 @@
   &__discount-desc {
     margin: 0;
     font-size: vars.$font-size-sm;
-    color: rgb(255 255 255 / 90%);
+    color: vars.$color-text-inverse-muted;
     line-height: 1.5;
-    max-width: 28ch;
+    max-width: vars.$max-width-short-copy;
   }
 
   &__right {
@@ -83,23 +79,23 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.25rem;
-    max-width: 480px;
+    gap: vars.$space-lg-plus;
+    max-width: vars.$max-width-offer-panel;
   }
 
   &__title {
     margin: 0;
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-size: vars.$font-size-section-title;
     font-weight: vars.$font-weight-bold;
-    color: #fff;
+    color: vars.$color-background;
     line-height: 1.2;
   }
 
   &__description {
     margin: 0;
     font-size: vars.$font-size-base;
-    color: rgb(255 255 255 / 90%);
+    color: vars.$color-text-inverse-muted;
     line-height: 1.6;
-    max-width: 45ch;
+    max-width: vars.$max-width-offer-description;
   }
 }

@@ -1,3 +1,5 @@
+@use "../abstracts/variables" as vars;
+
 *{
   margin: 0;
   padding: 0;
@@ -6,46 +8,33 @@
 }
 
 body {
-  font-family: var(--font-family-base), sans-serif;
-  font-size: var(--font-size-base);
-  font-weight: 400;
+  font-family: vars.$font-primary, sans-serif;
+  font-size: vars.$font-size-base;
+  font-weight: vars.$font-weight-normal;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
 h1 {
-  font-size: var(--font-size-h1);
+  font-size: vars.$font-size-h1;
   line-height: 1.2;
 }
 
 h2 {
-  font-size: var(--font-size-h2);
+  font-size: vars.$font-size-h2;
   line-height: 1.25;
 }
 
 h3 {
-  font-size: var(--font-size-h3);
+  font-size: vars.$font-size-h3;
   line-height: 1.3;
 }
 
 h4 {
-  font-size: var(--font-size-h4);
+  font-size: vars.$font-size-h4;
   line-height: 1.35;
 }
 
 small {
-  font-size: var(--font-size-sm);
-}
-
-main{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: clamp(2rem, 5vw, 5rem);
-}
-
-.main-content > .hero,
-.main-content > .page-hero {
-  width: 100vw;
+  font-size: vars.$font-size-sm;
 }

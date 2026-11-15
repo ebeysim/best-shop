@@ -6,7 +6,7 @@
   width: 100%;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: vars.$z-header;
 
   &__top {
     display: grid;
@@ -15,13 +15,13 @@
       "logo actions"
       "socials socials";
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem;
+    gap: vars.$space-md;
+    padding: vars.$space-md vars.$space-lg;
 
     @include for-device("mobile-landscape"){
         grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
         grid-template-areas: "socials logo actions";
-        padding-inline: 1.5rem;
+        padding-inline: vars.$space-xl;
     }
   }
 
@@ -30,7 +30,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
+    gap: vars.$space-md;
 
     @include for-device("mobile-landscape"){
       justify-content: flex-start;
@@ -47,11 +47,11 @@
     grid-area: logo;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: vars.$space-sm;
     min-width: 0;
     color: vars.$color-accent;
-    font-size: 1.25rem;
-    font-weight: 800;
+    font-size: vars.$font-size-lg;
+    font-weight: vars.$font-weight-extrabold;
     white-space: nowrap;
     text-decoration: none;
 
@@ -68,10 +68,10 @@
     justify-self: end;
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: vars.$space-xs;
 
     @include for-device("mobile-landscape"){
-      gap: 0.5rem;
+      gap: vars.$space-sm;
     }
 
     button, a {
@@ -80,7 +80,7 @@
       justify-content: center;
       width: 2.25rem;
       height: 2.25rem;
-      padding: 0.35rem;
+      padding: vars.$space-xs-plus;
       border: 0;
       background: transparent;
       cursor: pointer;
@@ -98,20 +98,20 @@
 
     &::after {
       position: absolute;
-      top: -0.25rem;
-      right: -0.25rem;
+      top: calc(-1 * vars.$space-xs);
+      right: calc(-1 * vars.$space-xs);
       display: flex;
       min-width: 1.25rem;
       height: 1.25rem;
       align-items: center;
       justify-content: center;
-      padding-inline: 0.25rem;
-      border-radius: 999px;
+      padding-inline: vars.$space-xs;
+      border-radius: vars.$radius-pill;
       background-color: vars.$color-accent;
       color: vars.$color-background;
       content: attr(data-cart-count);
-      font-size: 0.7rem;
-      font-weight: 700;
+      font-size: vars.$font-size-xs;
+      font-weight: vars.$font-weight-bold;
       line-height: 1;
       pointer-events: none;
       white-space: nowrap;
@@ -124,15 +124,16 @@
 
   .burger-btn {
     flex-direction: column;
-    gap: 0.25rem;
+    gap: vars.$space-xs;
 
     span {
       display: block;
       width: 1.25rem;
       height: 2px;
-      border-radius: 2px;
+      border-radius: vars.$radius-sm;
       background-color: vars.$color-text;
-      transition: transform 160ms ease, opacity 160ms ease;
+      transition: transform vars.$transition-fast vars.$transition-ease,
+        opacity vars.$transition-fast vars.$transition-ease;
     }
   }
 
@@ -156,7 +157,7 @@
 
   &__divider {
     border: none;
-    border-top: 1px solid #ececec;
+    border-top: vars.$border-width vars.$color-border-subtle solid;
     margin: 0;
   }
 }
@@ -164,7 +165,7 @@
 .site-nav {
   display: flex;
   justify-content: center;
-  padding: 0.5rem 1rem;
+  padding: vars.$space-sm vars.$space-lg;
 
   .site-header-enhanced & {
     display: none;
@@ -186,11 +187,11 @@
 
   &__link {
     display: block;
-    padding: 0.75rem 1rem;
+    padding: vars.$space-md vars.$space-lg;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: vars.$font-weight-semibold;
     color: vars.$color-text;
-    font-size: 0.95rem;
+    font-size: vars.$font-size-base;
     text-align: center;
 
     &:hover,
@@ -206,11 +207,11 @@
       flex-flow: row wrap;
       justify-content: center;
       width: auto;
-      gap: 0.5rem 1rem;
+      gap: vars.$space-sm vars.$space-lg;
     }
 
     &__link {
-      padding: 0.5rem 0.25rem;
+      padding: vars.$space-sm vars.$space-xs;
     }
   }
 }
@@ -218,7 +219,7 @@
 @include for-device("tablet-portrait") {
   .site-header {
     &__top {
-      padding-inline: 2rem;
+      padding-inline: vars.$space-2xl;
     }
 
     .burger-btn {
@@ -227,18 +228,18 @@
   }
 
   .site-nav {
-    padding: 0.75rem 1.5rem;
+    padding: vars.$space-md vars.$space-xl;
 
     .site-header-enhanced & {
       display: flex;
     }
 
     &__list {
-      gap: 1.5rem;
+      gap: vars.$space-xl;
     }
 
     &__link {
-      padding: 0.5rem 0.25rem;
+      padding: vars.$space-sm vars.$space-xs;
     }
   }
 }
@@ -246,13 +247,13 @@
 @include for-device("tablet-landscape") {
   .site-header {
     &__top {
-      padding-inline: 3rem;
+      padding-inline: vars.$space-4xl;
     }
   }
 
   .site-nav {
     &__list {
-      gap: 2.25rem;
+      gap: vars.$space-2xl-plus;
     }
   }
 }
@@ -260,15 +261,15 @@
 @include for-device("desktop") {
   .site-header {
     &__top {
-      max-width: 80rem;
+      max-width: vars.$max-width-header;
       margin-inline: auto;
-      padding-inline: 4rem;
+      padding-inline: vars.$space-6xl;
     }
   }
 
   .site-nav {
     &__list {
-      gap: 2.75rem;
+      gap: vars.$space-3xl-plus;
     }
   }
 }
@@ -276,34 +277,34 @@
 @include for-device("desktop-wide") {
   .site-header {
     &__top {
-      max-width: 90rem;
+      max-width: vars.$max-width-header-wide;
     }
   }
 }
 
 .login-modal {
-  width: min(92vw, 460px);
-  padding: 2.5rem 2.25rem;
+  width: min(92vw, vars.$max-width-login-modal);
+  padding: vars.$space-3xl vars.$space-2xl-plus;
   border: none;
   background-color: vars.$color-background;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  box-shadow: vars.$shadow-login;
 
   &::backdrop {
-    background: rgba(0, 0, 0, 0.45);
+    background: vars.$color-overlay-backdrop;
   }
 
   &__options {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: vars.$space-lg;
     font-size: vars.$font-size-xs;
   }
 
   &__remember {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
+    gap: vars.$space-sm-plus;
     color: vars.$color-secondary-text;
     cursor: pointer;
 

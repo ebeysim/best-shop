@@ -1,21 +1,24 @@
+@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as *;
+
 .feature-mini-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 260px;
+  max-width: vars.$max-width-feature-card;
 
   &__icon {
     width: 60px;
     height: 60px;
-    background-color: #b92770;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.25rem;
+    background-color: vars.$color-accent;
 
-    @media (min-width: 768px) {
-      margin-bottom: 1.5rem;
+    @include flex-center;
+
+    margin-bottom: vars.$space-lg-plus;
+
+    @include for-device("tablet-portrait") {
+      margin-bottom: vars.$space-xl;
     }
 
     img {
@@ -25,15 +28,15 @@
   }
 
   &__title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #000000;
-    margin-bottom: 0.75rem;
+    font-size: vars.$font-size-lg;
+    font-weight: vars.$font-weight-bold;
+    color: vars.$color-text;
+    margin-bottom: vars.$space-md;
   }
 
   &__desc {
-    font-size: 0.875rem;
+    font-size: vars.$font-size-sm;
     line-height: 1.6;
-    color: #504e4a;
+    color: vars.$color-secondary-text;
   }
 }

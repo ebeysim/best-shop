@@ -7,16 +7,15 @@
   min-height: 320px;
   background-size: cover;
   background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+  @include flex-center;
+
   text-align: center;
-  padding: 3rem 1.25rem;
+  padding: vars.$space-hero-block vars.$space-hero-inline;
   color: vars.$color-secondary;
 
   @include for-device("mobile-landscape"){
     min-height: 400px;
-    padding: 4rem 1.5rem;
   }
 
   @include for-device("tablet-landscape"){
@@ -24,13 +23,13 @@
   }
 
   &__content {
-    max-width: 640px;
+    max-width: vars.$max-width-hero-copy;
   }
 
   &__title {
     font-size: vars.$font-size-h1;
     font-weight: vars.$font-weight-bold;
-    margin-bottom: 0.875rem;
+    margin-bottom: vars.$space-md-plus;
   }
 
   &__subtitle {

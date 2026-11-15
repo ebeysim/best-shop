@@ -4,13 +4,11 @@
 .site-footer{
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin-top: clamp(2rem, 5vw, 5rem);
+  gap: vars.$space-2xl;
+  margin-top: vars.$space-footer-top;
 
   &__benefits-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
 
     img {
       width: 100%;
@@ -21,11 +19,11 @@
   &__information{
     display: flex;
     flex-direction: column;
-    margin: 0 clamp(2rem, 10vw, 10rem);
+    margin: 0 vars.$space-footer-inline;
 
     &__container {
       display: grid;
-      gap: 2rem;
+      gap: vars.$space-2xl;
       grid-template-columns: 1fr;
       grid-template-areas:
       "links"
@@ -37,8 +35,7 @@
       // 2. Desktop Transition (Rearrange into the 2-column layout)
       @include for-device("tablet-landscape") {
         grid-template-columns: 1.4fr 1fr;
-        column-gap: 5rem;
-        row-gap: 2.5rem;
+        gap: vars.$space-3xl vars.$space-8xl;
         grid-template-areas:
         "links    contact"
         "shipping details"
@@ -57,8 +54,8 @@
   // Headings
   .footer-group__heading {
     font-size: vars.$font-size-sm;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    font-weight: vars.$font-weight-bold;
+    margin-bottom: vars.$space-lg;
     color: vars.$color-text;
   }
 
@@ -66,7 +63,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 1rem;
+    gap: vars.$space-lg;
 
     .footer-group__list {
       list-style: none;
@@ -74,7 +71,7 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.65rem;
+      gap: vars.$space-control-block;
 
       a {
         text-decoration: none;
@@ -98,7 +95,7 @@
 
   .footer-details {
     display: grid;
-    gap: 1.5rem;
+    gap: vars.$space-xl;
     grid-template-columns: 1fr;
     font-style: normal;
 
@@ -109,11 +106,11 @@
     .footer-detail-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.75rem;
-      font-size: var(--font-size-sm);
+      gap: vars.$space-md;
+      font-size: vars.$font-size-sm;
 
       &__icon {
-        font-size: 1.15rem;
+        font-size: vars.$font-size-lg;
         color: vars.$color-accent;
         flex-shrink: 0;
       }
@@ -121,6 +118,7 @@
       a {
         text-decoration: none;
         color: inherit;
+
         &:hover {
           color: vars.$color-accent ;
         }
@@ -133,7 +131,7 @@
     color: vars.$color-text;
     opacity: 0.35;
     font-size: vars.$font-size-xs;
-    margin-bottom: 1rem;
-    padding-top: 1.5rem;
+    margin-bottom: vars.$space-lg;
+    padding-top: vars.$space-xl;
   }
 }

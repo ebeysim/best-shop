@@ -1,70 +1,198 @@
 @use "functions" as *;
-// Font Family
 
-
-// Fluid Font Sizes using clamp(min-size, fluid-font()-calc, max-size)
-// Formula: clamp(min-rem, base-rem + viewport-width-vw, max-rem)
 :root {
   --font-family-base: "Montserrat", sans-serif;
-
-
+  --font-size-h1: #{fluid(32px, 50px)};
+  --font-size-h2: #{fluid(26px, 40px)};
+  --font-size-h3: #{fluid(22px, 32px)};
+  --font-size-h4: #{fluid(18px, 24px)};
+  --font-size-2xl: #{fluid(24px, 32px)};
+  --font-size-section-title: #{fluid(28px, 40px)};
+  --font-size-display: #{fluid(56px, 104px)};
+  --font-size-lg: #{fluid(18px, 20px)};
+  --font-size-base: #{fluid(15px, 17px)};
+  --font-size-sm: #{fluid(13px, 14px)};
+  --font-size-xs: #{fluid(11px, 12px)};
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --color-background: #fff;
+  --color-secondary: #E7E8E9;
+  --color-accent: #B92770;
+  --color-text: #000;
+  --color-secondary-text: #504E4A;
+  --color-yellow: #F5B423;
+  --color-error: #d93025;
+  --color-ink: #111;
+  --color-neutral-dark: #1a1a1a;
+  --color-neutral-800: #333;
+  --color-neutral-700: #555;
+  --color-neutral-500: #888;
+  --color-surface-muted: #f5f5f5;
+  --color-border: #dcdcdc;
+  --color-border-muted: #e0e0e0;
+  --color-border-subtle: #ececec;
+  --color-accent-tint: rgb(185 39 112 / 6%);
+  --color-accent-soft: rgb(185 39 112 / 8%);
+  --color-accent-subtle: rgb(185 39 112 / 10%);
+  --color-accent-focus: rgb(185 39 112 / 20%);
+  --color-error-focus: rgb(217 48 37 / 15%);
+  --color-overlay-medium: rgb(0 0 0 / 40%);
+  --color-overlay-strong: rgb(0 0 0 / 55%);
+  --color-overlay-heavy: rgb(0 0 0 / 85%);
+  --color-overlay-dark: rgb(0 0 0 / 60%);
+  --color-overlay-backdrop: rgb(0 0 0 / 45%);
+  --color-overlay-modal: rgb(0 0 0 / 50%);
+  --color-text-inverse-muted: rgb(255 255 255 / 90%);
   --space-inline: clamp(1rem, 0.5rem + 2vw, 2rem);
   --space-section: clamp(2rem, 1rem + 3vw, 3rem);
   --space-section-large: clamp(3rem, 1rem + 5vw, 5rem);
-
-
-  // Heading fluid-font() font sizes
-  --font-size-h1: #{fluid-font(32px, 50px)};       // ~32px to 50px
-  --font-size-h2: #{fluid-font(26px, 40px)};   // ~26px to 40px
-  --font-size-h3: #{fluid-font(22px, 32px)};     // ~22px to 32px
-  --font-size-h4: #{fluid-font(18px, 24px)};       // ~18px to 24px
-
-  // Body & Text fluid-font() font sizes
-  --font-size-lg: #{fluid-font(18px, 20px)};   // ~18px to 20px
-  --font-size-base: #{fluid-font(15px, 17px)};   // ~15px to 17px
-  --font-size-sm: #{fluid-font(13px, 14px)}; // ~13px to 14px
-  --font-size-xs: #{fluid-font(11px, 12px)};  // ~11px to 12px
-
-  --font-weight-normal: 400;
-  --font-weight-bold: 700;
-
-  // Colors
-  --color-background: #FFFFFF;
-  --color-secondary: #E7E8E9;
-  --color-accent: #B92770;
-  --color-text: #000000;
-  --color-secondary-text: #504E4A;
-  --color-yellow: #F5B423;
-  --color-form-label: #504E4A;
-  --color-error: #d93025;
+  --space-main-gap: clamp(2rem, 5vw, 5rem);
 }
 
-// SCSS shortcuts mapped to CSS variables
 $font-primary: var(--font-family-base);
 $font-size-h1: var(--font-size-h1);
 $font-size-h2: var(--font-size-h2);
 $font-size-h3: var(--font-size-h3);
 $font-size-h4: var(--font-size-h4);
+$font-size-2xl: var(--font-size-2xl);
+$font-size-section-title: var(--font-size-section-title);
+$font-size-display: var(--font-size-display);
 $font-size-lg: var(--font-size-lg);
 $font-size-base: var(--font-size-base);
 $font-size-sm: var(--font-size-sm);
 $font-size-xs: var(--font-size-xs);
+$font-weight-normal: var(--font-weight-normal);
+$font-weight-semibold: var(--font-weight-semibold);
+$font-weight-bold: var(--font-weight-bold);
+$font-weight-extrabold: var(--font-weight-extrabold);
 $color-background: var(--color-background);
 $color-secondary: var(--color-secondary);
 $color-accent: var(--color-accent);
 $color-text: var(--color-text);
 $color-secondary-text: var(--color-secondary-text);
 $color-yellow: var(--color-yellow);
-$font-weight-normal: var(--font-weight-normal);
-$font-weight-bold: var(--font-weight-bold);
 $color-error: var(--color-error);
-
-// Screen size breakpoints
+$color-ink: var(--color-ink);
+$color-neutral-dark: var(--color-neutral-dark);
+$color-neutral-800: var(--color-neutral-800);
+$color-neutral-700: var(--color-neutral-700);
+$color-neutral-500: var(--color-neutral-500);
+$color-surface-muted: var(--color-surface-muted);
+$color-border: var(--color-border);
+$color-border-muted: var(--color-border-muted);
+$color-border-subtle: var(--color-border-subtle);
+$color-accent-tint: var(--color-accent-tint);
+$color-accent-soft: var(--color-accent-soft);
+$color-accent-subtle: var(--color-accent-subtle);
+$color-accent-focus: var(--color-accent-focus);
+$color-error-focus: var(--color-error-focus);
+$color-overlay-medium: var(--color-overlay-medium);
+$color-overlay-strong: var(--color-overlay-strong);
+$color-overlay-heavy: var(--color-overlay-heavy);
+$color-overlay-dark: var(--color-overlay-dark);
+$color-overlay-backdrop: var(--color-overlay-backdrop);
+$color-overlay-modal: var(--color-overlay-modal);
+$color-text-inverse-muted: var(--color-text-inverse-muted);
+$space-3xs: 0.15rem;
+$space-2xs: 0.2rem;
+$space-xs: 0.25rem;
+$space-xs-plus: 0.35rem;
+$space-sm-compact: 0.4rem;
+$space-sm-plus: 0.45rem;
+$space-sm: 0.5rem;
+$space-sm-wide: 0.55rem;
+$space-control-block: 0.65rem;
+$space-md: 0.75rem;
+$space-control-inline: 0.875rem;
+$space-md-plus-fixed: 0.85rem;
+$space-field-padding: 0.85rem;
+$space-lg-compact: 0.9rem;
+$space-md-plus: fluid-space(14px);
+$space-lg: fluid-space(16px);
+$space-lg-plus: fluid-space(20px);
+$space-xl: fluid-space(24px);
+$space-xl-plus: fluid-space(28px);
+$space-2xl: fluid-space(32px);
+$space-2xl-plus: fluid-space(36px);
+$space-3xl-plus: fluid-space(44px);
+$space-3xl: fluid-space(40px);
+$space-4xl: fluid-space(48px);
+$space-5xl: fluid-space(56px);
+$space-6xl: fluid-space(64px);
+$space-7xl: fluid-space(72px);
+$space-8xl: fluid-space(80px);
+$space-9xl: fluid-space(96px);
+$space-footer-inline: clamp(2rem, 10vw, 10rem);
+$space-footer-top: clamp(2rem, 5vw, 5rem);
+$space-home-hero-inline: clamp(2rem, 10vw, 10rem);
+$space-hero-review: fluid(24px, 48px);
+$space-discount-overlap: clamp(-5rem, -4vw, -2rem);
+$space-card-padding: clamp(1.25rem, 3vw, 1.75rem);
+$space-card-padding-large: clamp(1.5rem, 3vw, 2.25rem);
+$space-hero-block: fluid(48px, 64px);
+$space-hero-inline: fluid(20px, 24px);
+$space-offer-block: clamp(2rem, 5vw, 3.5rem);
+$space-offer-inline: clamp(1.5rem, 6vw, 4.5rem);
+$space-inline: var(--space-inline);
+$space-section: var(--space-section);
+$space-main-gap: var(--space-main-gap);
+$radius-sm: 2px;
+$radius-xs: 1px;
+$radius-circle: 50%;
+$radius-pill: 999px;
+$size-control: 2.25rem;
+$border-width: 1px;
+$border-width-strong: 2px;
+$border-width-emphasis: 3px;
+$shadow-card: 0 2px 8px rgb(0 0 0 / 12%);
+$shadow-card-raised: 0 4px 12px rgb(0 0 0 / 8%);
+$shadow-card-hover: 0 12px 28px rgb(0 0 0 / 18%);
+$shadow-section: 0 10px 30px rgb(0 0 0 / 8%);
+$shadow-dropdown: 0 6px 18px rgb(0 0 0 / 8%);
+$shadow-modal: 0 12px 32px rgb(0 0 0 / 20%);
+$shadow-login: 0 12px 32px rgb(0 0 0 / 18%);
+$shadow-customer: 0 0 10px rgb(0 0 0 / 20%);
+$transition-fast: 160ms;
+$transition-standard: 200ms;
+$transition-smooth: 300ms;
+$transition-slow: 400ms;
+$transition-ease: ease;
+$z-base: 1;
+$z-raised: 2;
+$z-dropdown: 25;
+$z-overlay: 10;
+$z-header: 1000;
+$max-width-feature-card: 260px;
+$max-width-product-card: 300px;
+$max-width-offer-copy: 340px;
+$max-width-offer-panel: 480px;
+$max-width-search-modal: 380px;
+$max-width-product-gallery: 480px;
+$max-width-content-narrow: 600px;
+$min-width-product-column: 320px;
+$max-width-hero-copy: 640px;
+$max-width-home-discount: 980px;
+$max-width-content: 1200px;
+$max-width-header: 80rem;
+$max-width-header-wide: 90rem;
+$max-width-login-modal: 460px;
+$max-width-sidebar: 290px;
+$min-width-filter-column: 180px;
+$max-width-filter-column: 240px;
+$min-width-action-button: 165px;
+$min-width-sort-control: 190px;
+$min-width-add-cart: 180px;
+$max-width-short-copy: 28ch;
+$max-width-offer-description: 45ch;
+$max-width-home-copy: 32ch;
 $breakpoints: (
-        "mobile-portrait":  320px,
-        "mobile-landscape": 576px,
-        "tablet-portrait":  768px,
-        "tablet-landscape": 1024px,
-        "desktop":          1280px,
-        "desktop-wide":     1440px
+  "mobile-portrait": 320px,
+  "mobile-landscape": 576px,
+  "tablet-portrait": 768px,
+  "tablet-portrait-wide": 820px,
+  "tablet-landscape": 1024px,
+  "desktop": 1280px,
+  "desktop-wide": 1440px
 ) !default;

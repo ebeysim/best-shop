@@ -1,49 +1,49 @@
-@use '../abstracts/variables' as vars;
+@use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
 .about-features {
-  @include cards-section-grid();
+  @include cards-section-grid;
 }
 
 .about-arrivals {
-  max-width: 1200px;
+  max-width: $max-width-content;
   margin: 0 auto;
-  padding: 2rem 1.25rem 3.5rem;
+  padding: $space-2xl $space-lg-plus $space-5xl;
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  gap: 2rem;
+  gap: $space-2xl;
 
   @include for-device("tablet-landscape"){
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    padding: 3rem 1.5rem 5rem;
+    gap: $space-6xl;
+    padding: $space-4xl $space-xl $space-8xl;
   }
 
   &__title {
-    font-size: vars.$font-size-h2;
-    color: vars.$color-text;
-    margin-bottom: 1.25rem;
+    font-size: $font-size-h2;
+    color: $color-text;
+    margin-bottom: $space-lg-plus;
 
     @include for-device("mobile-landscape"){
-      font-size: 2.25rem;
-      margin-bottom: 1.5rem;
+      font-size: $font-size-section-title;
+      margin-bottom: $space-xl;
     }
   }
 
   &__body {
-    font-size: vars.$font-size-sm;
+    font-size: $font-size-sm;
     line-height: 1.7;
-    color: vars.$color-secondary-text;
-    margin-bottom: 1.25rem;
+    color: $color-secondary-text;
+    margin-bottom: $space-lg-plus;
   }
 
   .btn {
-    margin-top: 0.75rem;
+    margin-top: $space-md;
     display: inline-block;
 
     @include for-device("mobile-landscape"){
-      margin-top: 1rem;
+      margin-top: $space-lg;
     }
   }
 
@@ -60,42 +60,42 @@
 }
 
 .our_team {
-  max-width: 1200px;
+  max-width: $max-width-content;
   margin: 0 auto;
-  padding: 2rem 1.25rem 4rem;
+  padding: $space-2xl $space-lg-plus $space-6xl;
 
   @include for-device("mobile-landscape"){
-    padding: 3rem 1.5rem 6rem;
+    padding: $space-4xl $space-xl $space-9xl;
   }
 
   &__header {
     text-align: center;
-    margin-bottom: 2.25rem;
+    margin-bottom: $space-2xl-plus;
 
     @include for-device("mobile-landscape"){
-      margin-bottom: 3.5rem;
+      margin-bottom: $space-5xl;
     }
   }
 
   &__title {
-    font-size: vars.$font-size-h2;
-    font-weight: vars.$font-weight-bold;
-    color: vars.$color-text;
-    border-bottom: 3px solid vars.$color-accent;
+    font-size: $font-size-h2;
+    font-weight: $font-weight-bold;
+    color: $color-text;
+    border-bottom: $border-width-emphasis solid $color-accent;
   }
 
   &__cards-container {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: $space-2xl;
 
     @include for-device("mobile-landscape"){
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (min-width: 820px) {
+    @include for-device("tablet-portrait-wide") {
       grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
+      gap: $space-3xl;
     }
   }
 }
