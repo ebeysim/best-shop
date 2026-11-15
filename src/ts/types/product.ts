@@ -2,14 +2,12 @@ export type ProductCategory =
     | 'suitcases'
     | 'carry-ons'
     | 'luggage sets'
-    | "kids' luggage"
-    | (string & {});
+    | "kids' luggage";
 
 export type ProductBlock =
     | 'Selected Products'
     | 'New Products Arrival'
-    | 'You May Also Like'
-    | (string & {});
+    | 'You May Also Like';
 
 export interface Product {
   id: string;
@@ -31,7 +29,7 @@ export type SortOption = 'default' | 'price-asc' | 'price-desc' | 'popularity' |
 
 export interface ProductQueryOptions {
   salesStatus?: boolean;
-  block?: string;
+  block?: ProductBlock;
   category?: string;
   color?: string;
   size?: string;

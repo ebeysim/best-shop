@@ -75,12 +75,25 @@
 }
 
 .cart-table {
+  display: block;
   width: 100%;
   border-collapse: collapse;
   text-align: left;
 
   &__head {
+    display: none;
     background-color: vars.$color-secondary-text;
+  }
+
+  &__body {
+    display: block;
+    width: 100%;
+  }
+
+  &__row {
+    display: block;
+    width: 100%;
+    padding: vars.$space-lg;
   }
 
   &__th {
@@ -98,14 +111,23 @@
   }
 
   &__td {
-    padding: vars.$space-lg vars.$space-md;
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: vars.$space-lg;
+    padding: vars.$space-sm 0;
     color: vars.$color-secondary-text;
     font-size: vars.$font-size-sm;
+    text-align: right;
     vertical-align: middle;
   }
 
   &__td--image {
-    width: 6rem;
+    width: 100%;
+    justify-content: flex-start;
+    padding-bottom: vars.$space-lg;
   }
 
   &__image {
@@ -145,8 +167,7 @@
   }
 
   &__td--delete {
-    width: 4rem;
-    text-align: center;
+    width: 100%;
   }
 
   &__delete-btn {
@@ -264,38 +285,13 @@
 }
 
 .cart-feedback {
+  display: block;
   margin: vars.$space-xl 0 0;
   padding: vars.$space-md vars.$space-lg;
   border-left: vars.$border-width-emphasis solid vars.$color-accent;
   background-color: vars.$color-accent-tint;
   color: vars.$color-text;
   font-size: vars.$font-size-sm;
-}
-
-.cart-table__head {
-  display: none;
-}
-
-.cart-table,
-.cart-table__body,
-.cart-table__row,
-.cart-table__td {
-  display: block;
-  width: 100%;
-}
-
-.cart-table__row {
-  padding: vars.$space-lg;
-}
-
-.cart-table__td {
-  display: flex;
-  min-width: 0;
-  align-items: center;
-  justify-content: space-between;
-  gap: vars.$space-lg;
-  padding: vars.$space-sm 0;
-  text-align: right;
 }
 
 .cart-table__td::before {
@@ -306,17 +302,8 @@
   text-align: left;
 }
 
-.cart-table__td--image {
-  justify-content: flex-start;
-  padding-bottom: vars.$space-lg;
-}
-
 .cart-table__td--image::before {
   display: none;
-}
-
-.cart-table__td--delete {
-  width: 100%;
 }
 
 .cart-table__td--delete::before {

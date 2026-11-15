@@ -183,9 +183,34 @@
 }
 
 // Quantity Stepper (- 1 +)
+.product-gallery__thumbs {
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+
+.product-gallery__thumbs,
+.quantity-stepper {
+  > .product-a11y-legend {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
 .quantity-stepper {
   display: inline-flex;
   align-items: center;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
   border: $border-width solid $color-accent;
   height: 44px;
 
@@ -221,6 +246,11 @@
       margin: 0;
     }
   }
+}
+
+.form__status {
+  display: block;
+  margin-block: 1em;
 }
 
 // 4. Tabbed Menu (DETAILS / REVIEWS / SHIPPING POLICY)

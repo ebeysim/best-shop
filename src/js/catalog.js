@@ -139,36 +139,7 @@ function bindFilterEvents() {
     });
 
     // Hover Dropdown Options (Size, Color, Category)
-    document.querySelectorAll(".filter-dropdown").forEach((dropdown) => {
-        const filterKey = dropdown.dataset.filter;
-        const trigger = dropdown.querySelector(".filter-dropdown__trigger");
-        const valueLabel = dropdown.querySelector(".filter-dropdown__value");
-        const defaultLabel = trigger?.dataset.defaultLabel || "Choose option";
-        const options = dropdown.querySelectorAll("button[data-value]");
-
-        options.forEach((optBtn) => {
-            optBtn.addEventListener("click", () => {
-                const chosenValue = optBtn.dataset.value;
-                const isSame = state.filters[filterKey] === chosenValue;
-
-                state.filters[filterKey] = isSame ? undefined : chosenValue;
-
-                options.forEach((b) => b.classList.remove("is-selected"));
-
-                if (!isSame) {
-                    optBtn.classList.add("is-selected");
-                    trigger?.classList.add("filter-dropdown__trigger--active");
-                    if (valueLabel) valueLabel.textContent = optBtn.textContent.trim();
-                } else {
-                    trigger?.classList.remove("filter-dropdown__trigger--active");
-                    if (valueLabel) valueLabel.textContent = defaultLabel;
-                }
-
-                state.currentPage = 1;
-                renderCatalog();
-            });
-        });
-    });
+    document.querySelectorAll(".filter-dropdown").forEach(bindFilterDropdown);
 
     // Sales Checkbox
     salesCheckbox?.addEventListener("change", () => {
@@ -204,6 +175,36 @@ function bindFilterEvents() {
         });
 
         renderCatalog();
+    });
+}
+
+function bindFilterDropdown(dropdown) {
+    const filterKey = dropdown.dataset.filter;
+    const trigger = dropdown.querySelector(".filter-dropdown__trigger");
+    const valueLabel = dropdown.querySelector(".filter-dropdown__value");
+    const defaultLabel = trigger?.dataset.defaultLabel || "Choose option";
+    const options = dropdown.querySelectorAll("button[data-value]");
+
+    options.forEach((optBtn) => {
+        optBtn.addEventListener("click", () => {
+            const chosenValue = optBtn.dataset.value;
+            const isSame = state.filters[filterKey] === chosenValue;
+
+            state.filters[filterKey] = isSame ? undefined : chosenValue;
+            options.forEach((button) => button.classList.remove("is-selected"));
+
+            if (!isSame) {
+                optBtn.classList.add("is-selected");
+                trigger?.classList.add("filter-dropdown__trigger--active");
+                if (valueLabel) valueLabel.textContent = optBtn.textContent.trim();
+            } else {
+                trigger?.classList.remove("filter-dropdown__trigger--active");
+                if (valueLabel) valueLabel.textContent = defaultLabel;
+            }
+
+            state.currentPage = 1;
+            renderCatalog();
+        });
     });
 }
 

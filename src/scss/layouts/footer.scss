@@ -45,11 +45,8 @@
   }
 
   // Assign named areas
-  .footer-links     { grid-area: links; }
   .footer-shipping  { grid-area: shipping; }
   .footer-contact   { grid-area: contact; }
-  .footer-details   { grid-area: details; }
-  .footer-copyright { grid-area: copyright; }
 
   // Headings
   .footer-group__heading {
@@ -60,6 +57,7 @@
   }
 
   .footer-links {
+    grid-area: links;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -94,6 +92,7 @@
   }
 
   .footer-details {
+    grid-area: details;
     display: grid;
     gap: vars.$space-xl;
     grid-template-columns: 1fr;
@@ -127,6 +126,7 @@
   }
 
   .footer-copyright {
+    grid-area: copyright;
     text-align: center;
     color: vars.$color-text;
     opacity: 0.35;

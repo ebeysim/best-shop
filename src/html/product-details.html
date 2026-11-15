@@ -28,7 +28,9 @@
                             id="product-main-image"
                     />
                 </div>
-                <div class="product-gallery__thumbs" id="product-thumbs" role="group" aria-label="Product image thumbnails"></div>
+                <fieldset class="product-gallery__thumbs" id="product-thumbs">
+                    <legend class="product-a11y-legend">Product image thumbnails</legend>
+                </fieldset>
             </div>
 
             <!-- Right: Product Info, Static Selects, Quantity & Add to Cart -->
@@ -85,7 +87,8 @@
 
                 <!-- Quantity Stepper + Add to Cart Button -->
                 <div class="product-info__purchase">
-                    <div class="quantity-stepper" role="group" aria-label="Product quantity">
+                    <fieldset class="quantity-stepper">
+                        <legend class="product-a11y-legend">Product quantity</legend>
                         <button type="button" class="quantity-stepper__btn" id="qty-minus" aria-label="Decrease quantity">−</button>
                         <input
                                 type="number"
@@ -96,7 +99,7 @@
                                 aria-label="Quantity"
                         />
                         <button type="button" class="quantity-stepper__btn" id="qty-plus" aria-label="Increase quantity">+</button>
-                    </div>
+                    </fieldset>
 
                     <button type="button" class="btn btn--primary product-info__add-btn" id="add-to-cart-btn">
                         Add To Cart
@@ -240,7 +243,7 @@
 
                             <button type="submit" class="btn btn--primary form__submit">SUBMIT</button>
 
-                            <p class="form__status" id="review-form-status" role="status" aria-live="polite"></p>
+                            <output class="form__status" id="review-form-status" aria-live="polite"></output>
                             <p class="form__error" id="review-form-error" role="alert"></p>
                         </form>
                     </div>

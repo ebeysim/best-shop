@@ -76,6 +76,7 @@ function initImageCarousel(product) {
     mainImg.src = galleryImages[0];
     mainImg.alt = product.name;
 
+    const galleryLegend = thumbsContainer.querySelector("legend");
     thumbsContainer.innerHTML = galleryImages
         .map(
             (src, index) => `
@@ -90,6 +91,7 @@ function initImageCarousel(product) {
       `
         )
         .join("");
+    if (galleryLegend) thumbsContainer.prepend(galleryLegend);
 
     thumbsContainer.addEventListener("click", (event) => {
         const target = event.target;

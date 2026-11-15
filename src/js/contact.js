@@ -77,8 +77,6 @@ export function initContactForm() {
             return;
         }
 
-        const formData = new FormData(form);
-        const submission = Object.fromEntries(formData.entries());
         form.reset();
         emailInput.classList.remove('form__input--invalid');
         emailError.textContent = '';
